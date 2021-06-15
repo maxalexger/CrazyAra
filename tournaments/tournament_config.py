@@ -25,7 +25,6 @@ ARA_ENGINE_SL7_LOCAL = Engine(
     shortname=f'AraSL7',
     binary_name=ARA_BINARY_NAME,
     binary_dir=f'/home/maxalex/Documents/Engines/MultiAraSL7/',
-    model_dir=f'/home/maxalex/Documents/Engines/MultiAraSL7/model/',
     version=f'supervised'
 )
 
@@ -35,7 +34,6 @@ ARA_ENGINE_UP10_LOCAL = Engine(
     shortname=f'Ara10',
     binary_name=ARA_BINARY_NAME,
     binary_dir=f'/home/maxalex/Documents/Engines/MultiAra-10updates/',
-    model_dir=f'/home/maxalex/Documents/Engines/MultiAra-10updates/model/',
     version=f'Update10'
 )
 
@@ -44,7 +42,6 @@ ARA_ENGINE_UP10_FROM0_LOCAL = Engine(
     shortname=f'Ara10From0',
     binary_name=ARA_BINARY_NAME,
     binary_dir=f'/home/maxalex/Documents/Engines/MultiAra-10updates-from0/',
-    model_dir=f'/home/maxalex/Documents/Engines/MultiAra-10updates-from0/model/',
     version=f'Update10From0',
 )
 
