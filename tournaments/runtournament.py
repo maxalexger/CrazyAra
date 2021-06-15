@@ -34,7 +34,7 @@ book = None
 if uci_variant in BOOKS.keys():
     book = BOOKS_PATH + BOOKS[uci_variant]
 ct = CutechessTournament(CLI_PATH, EXPORT_DIR, uci_variant, engines, mode, games, rounds, book, event_name)
-ct.run(testing=False)
+ct.run()
 
 # ------- Uploading ------- #
 if mode == 'local':

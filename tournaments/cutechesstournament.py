@@ -92,10 +92,10 @@ class CutechessTournament:
         assert (mode.fixed_movetime_sec is None) ^ (mode.time_control is None), \
             f'Do not use time control & fixed move time together!'
 
-    def run(self, testing=False):
+    def run(self):
         print(f'\n----- Setup ------\n')
         self._create_tournament_name()
-        self._create_tournament_dir(testing)
+        self._create_tournament_dir()
         self._create_cutechess_cmd()
         self.results_file_name = os.path.join(self.tournament_dir, f'{self.tournament_name}_results.txt')
 
@@ -126,14 +126,11 @@ class CutechessTournament:
             self.event_name = f'{engines_str}-{self.mode.name}'
         self.tournament_name = tournament_name
 
-    def _create_tournament_dir(self, debug):
+    def _create_tournament_dir(self):
         print(f'* Creating tournament directory')
         self.tournament_dir = os.path.join(self.export_dir, self.tournament_name)
         if os.path.exists(self.tournament_dir):
-            if debug:  # Overwrite the folder
-                pass
-            else:
-                raise FileExistsError('The tournament folder already exists')
+            raise FileExistsError('The tournament folder already exists')
         else:
             os.mkdir(self.tournament_dir)
 
