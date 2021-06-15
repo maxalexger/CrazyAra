@@ -114,7 +114,7 @@ class CutechessTournament:
         self._executing_cli_command()
         self.results_file.close()
 
-        self.myPrint(f'\n----- Statistics & after match tasks -----\n')
+        print(f'\n----- Statistics & after match tasks -----\n')
         self._getting_statistics()
         self._export_to_json()
 
