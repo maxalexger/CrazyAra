@@ -142,7 +142,7 @@ class CutechessTournament:
         cc_cmd = f'{self.cli_path} -variant {self.uci_variant} -event {self.event_name} ' \
                  f'-rounds {self.rounds}  -games {self.games} -wait 1000 ' \
                  f'-pgnout {self.tournament_name}.pgn -epdout {self.tournament_name}.epd ' \
-                 f'-site TU-Darmstadt -recover -resultformat wide2 ' \
+                 f'-site TU-Darmstadt -recover ' \
                  f'-draw movenumber=40 movecount=5 score=20 ' \
                  f'-resign movecount=5 score=900 twosided=true '
         if self.opening_book_path:
