@@ -21,7 +21,6 @@ class Engine:
     version: str
     binary_name: str
     binary_dir: str
-    model_dir: str = None
     cli_options: List[List[str]] = None
 
     def initialize(self, uci_variant: str) -> None:
@@ -137,12 +136,6 @@ class CutechessTournament:
                 raise FileExistsError('The tournament folder already exists')
         else:
             os.mkdir(self.tournament_dir)
-
-    def _copy_model_dir_to_tournament_folder(self, engine):
-        print(f'* Copying the model to tournament folder')
-        dst = os.path.join(self.tournament_dir, f'{engine.shortname}-model')
-        if not os.path.exists(dst):
-            shutil.copytree(engine.model_dir, dst)
 
     def _create_cutechess_cmd(self):
         print(f'* Creating cutechess command')
