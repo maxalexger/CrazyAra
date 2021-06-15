@@ -83,6 +83,7 @@ class CutechessTournament:
         self.cli_command = None
         self.results_file_name = None
         self.statistics = None
+        self.results_file = None
 
         for engine in engines:
             if engine.cli_options:
@@ -92,22 +93,28 @@ class CutechessTournament:
         assert (mode.fixed_movetime_sec is None) ^ (mode.time_control is None), \
             f'Do not use time control & fixed move time together!'
 
+    def myPrint(self, line):
+        print(line)
+        self.results_file.write(line)
+
     def run(self):
         print(f'\n----- Setup ------\n')
         self._create_tournament_name()
         self._create_tournament_dir()
         self._create_cutechess_cmd()
         self.results_file_name = os.path.join(self.tournament_dir, f'{self.tournament_name}_results.txt')
+        self.results_file = open(self.results_file_name, 'w')
 
-        print(f'\n----- Tournament Information ------\n')
-        print(f'* {self.rounds} rounds with {self.games} games')
-        print(f'* Mode = {self.mode.name}')
-        print(f'* Using opening book') if self.opening_book_path else print(f'* Using NO opening book')
+        self.myPrint(f'\n----- Tournament Information ------\n')
+        self.myPrint(f'* {self.rounds} rounds with {self.games} games')
+        self.myPrint(f'* Mode = {self.mode.name}')
+        self.myPrint(f'* Using opening book') if self.opening_book_path else self.myPrint(f'* Using NO opening book')
 
-        print(f'\n----- Running Tournament ------\n')
+        self.myPrint(f'\n----- Running Tournament ------\n')
         self._executing_cli_command()
+        self.results_file.close()
 
-        print(f'\n----- Statistics & after match tasks -----\n')
+        self.myPrint(f'\n----- Statistics & after match tasks -----\n')
         self._getting_statistics()
         self._export_to_json()
 
@@ -167,10 +174,9 @@ class CutechessTournament:
 
         self.cli_command = cc_cmd
 
-    def _executing_cli_command(self, ) -> None:
+    def _executing_cli_command(self) -> None:
         assert self.tournament_dir is not None and self.tournament_name is not None and self.cli_command is not None
         os.chdir(self.tournament_dir)
-        results_file = open(self.results_file_name, 'w')
         proc = Popen(shlex.split(self.cli_command), stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=False)
         proc.stdin.flush()
 
@@ -184,13 +190,12 @@ class CutechessTournament:
                         error = proc.stderr.readline()
                     break
             line = line.decode()
-            results_file.write(line)
+            self.results_file.write(line)
             print(line.rstrip(f'\n'))
             if line == 'Finished match\n':
                 break
 
         proc.kill()
-        results_file.close()
         time.sleep(1)
 
     def _getting_statistics(self) -> None:
