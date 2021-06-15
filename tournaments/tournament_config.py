@@ -66,7 +66,6 @@ ARA_ENGINE_UP10 = Engine(
     shortname=f'Ara10',
     binary_name=ARA_BINARY_NAME,
     binary_dir=f'/data/RL/engines/MultiAra-10updates/',
-    model_dir=f'/data/RL/engines/MultiAra-10updates/model/',
     version=f'Update10',
     cli_options=[['First_Device_ID', f'{MULTIARA_GPU}'],
                  ['Last_Device_ID', f'{MULTIARA_GPU}']]
@@ -77,7 +76,6 @@ ARA_ENGINE_UP10_FROM0 = Engine(
     shortname=f'Ara10From0',
     binary_name=ARA_BINARY_NAME,
     binary_dir=f'/data/RL/engines/MultiAra-10updates-from0/',
-    model_dir=f'/data/RL/engines/MultiAra-10updates-from0/model/',
     version=f'Update10From0',
     cli_options=[['First_Device_ID', f'{MULTIARA_GPU}'],
                  ['Last_Device_ID', f'{MULTIARA_GPU}']]
