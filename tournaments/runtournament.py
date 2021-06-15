@@ -9,7 +9,7 @@ from tournament_config import *
 # ----- Parameter ------- #
 mode = 'local'
 
-if mode == 'local':
+if mode == 'server':
     BOOKS_PATH = f'/home/maxalex/Git/books/'
     EXPORT_DIR = f'/home/maxalex/Documents/Cutechess-Tournaments/'
     CLI_PATH = f'/home/maxalex/Git/cutechess/projects/cli/cutechess-cli'
@@ -23,7 +23,7 @@ event_name = f'AtomicUp10From0vsUpdate10'
 uci_variant = f'atomic'
 games = 2
 rounds = 1
-engines = [ARA_ENGINE_UP10_LOCAL, ARA_ENGINE_UP10_FROM0_LOCAL]
+engines = [ARA_ENGINE_UP10, ARA_ENGINE_UP10_FROM0]
 mode = RAPID_MODE
 
 # ------ Execute ------- #
@@ -37,6 +37,6 @@ ct = CutechessTournament(CLI_PATH, EXPORT_DIR, uci_variant, engines, mode, games
 ct.run(testing=False)
 
 # ------- Uploading ------- #
-
-upload_cmd = f'rclone copy {ct.tournament_dir} Google-Drive:/MA-Chess-Variants/Tournaments/{ct.tournament_name}'
-ct.exec_bash_command(upload_cmd)
+if mode == 'local':
+    upload_cmd = f'rclone copy {ct.tournament_dir} Google-Drive:/MA-Chess-Variants/Tournaments/{ct.tournament_name}'
+    ct.exec_bash_command(upload_cmd)
