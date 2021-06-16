@@ -12,7 +12,7 @@ from tournament_config import *
 # ----- ARGS ------- #
 def parse_args(cmd_args: list):
     parser = argparse.ArgumentParser(description='Run cutechess tournament')
-    parser.add_argument("--gpu", type=int, default=1,
+    parser.add_argument("-gpu", type=int, default=1,
                         help="GPU to use for tournament. (default: 1)")
     parser.add_argument("--local", default=False, action="store_true",
                         help="If we use local or server mode. (default: False)")
