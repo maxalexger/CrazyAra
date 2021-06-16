@@ -83,7 +83,8 @@ ENV Z5_PATH /root/z5/
 # Clone the CrazyAra repository
 # Install python dependencies for training the neural network
 RUN cd /root \
-    && git clone https://github.com/QueensGambit/CrazyAra.git --recursive \
+    && git clone https://github.com/maxalexger/CrazyAra.git --recursive \
+  	&& cd CrazyAra && git checkout activemultiara \
     && cd /root/CrazyAra/DeepCrazyhouse/src/training/ \
     && pip install -r requirements.txt
 
