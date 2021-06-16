@@ -24,7 +24,7 @@ args = parse_args(sys.argv[1:])
 
 # ----- Parameter ------- #
 
-if args['local']:
+if args.local:
     BOOKS_PATH = f'/home/maxalex/Git/books/'
     EXPORT_DIR = f'/home/maxalex/Documents/Cutechess-Tournaments/'
     CLI_PATH = f'/home/maxalex/Git/cutechess/projects/cli/cutechess-cli'
@@ -52,10 +52,10 @@ for v in range(1):
         for engine in engines:
             engine.initialize(uci_variant)
             # insert gpu-id dynamically
-            if not args['local'] and engine.binary_name == 'MultiAra':
+            if not args.local and engine.binary_name == 'MultiAra':
                 engine.cli_options = [['Threads', '3'],
-                                      ['First_Device_ID', f'{args["gpu"]}'],
-                                      ['Last_Device_ID', f'{args["gpu"]}']]
+                                      ['First_Device_ID', f'{args.gpu}'],
+                                      ['Last_Device_ID', f'{args.gpu}']]
 
         book = None
         if uci_variant in BOOKS.keys():
