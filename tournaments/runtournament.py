@@ -34,7 +34,7 @@ else:
     CLI_PATH = f'/data/RL/cutechess-cli/cutechess-cli'
 
 
-variants = ['atomic']
+variants = ['3check', 'atomic', 'crazyhouse', 'horde', 'kingofthehill']
 modes = [FAST_MODE, LONG_MODE]
 
 for v in range(1):
@@ -43,9 +43,9 @@ for v in range(1):
         # ------ Select ------- #
 
         event_name = None
-        uci_variant = f'crazyhouse'
-        engines = [ARA_ENGINE_UP10_FROM0_LR04, ARA_ENGINE_UP10_FROM0]
-        mode = RAPID_MODE
+        uci_variant = variants[v]
+        engines = [ARA_ENGINE_UP10, FAIRY_ENGINE]
+        mode = FAST_MODE
 
         # ------ Execute ------- #
 
