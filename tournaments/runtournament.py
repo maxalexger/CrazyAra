@@ -50,12 +50,12 @@ for v in range(1):
         # ------ Execute ------- #
 
         for engine in engines:
-            engine.initialize(uci_variant)
             # insert gpu-id dynamically
             if not args.local and engine.binary_name == 'MultiAra':
                 engine.cli_options = [['Threads', '3'],
                                       ['First_Device_ID', f'{args.gpu}'],
                                       ['Last_Device_ID', f'{args.gpu}']]
+            engine.initialize(uci_variant)
 
         book = None
         if uci_variant in BOOKS.keys():
