@@ -28,7 +28,7 @@ class Engine:
             for option in self.cli_options:
                 assert len(option) == 2, f'{self.name}: Please provide List[List[str, str]] as cli_options param'
 
-        print(f'\n----- Initializing {self.name} binary------\n')
+        print(f'\n----- Initializing {self.name} Binary------\n')
         os.chdir(self.binary_dir)
         proc = Popen([os.path.join(self.binary_dir, self.binary_name)], stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=False)
         proc.stdin.write(f'setoption name uci_variant value {uci_variant}\n'.encode())
@@ -61,20 +61,20 @@ class Engine:
 @dataclass
 class TournamentMode:
     name: str
+    rounds: int
+    games: int = 2
     time_control: str = None
     fixed_movetime_sec: float = None
 
 
 class CutechessTournament:
     def __init__(self, cli_path: str, export_dir: str, uci_variant: str, engines: List[Engine],
-                 mode: TournamentMode, games: int, rounds: int, opening_book_path: str = None, event_name: str = None):
+                 mode: TournamentMode, opening_book_path: str = None, event_name: str = None):
         self.cli_path = cli_path
         self.export_dir = export_dir
         self.uci_variant = uci_variant
         self.engines = engines
         self.mode = mode
-        self.games = games
-        self.rounds = rounds
         self.opening_book_path = opening_book_path
         self.event_name = event_name
 
@@ -95,7 +95,7 @@ class CutechessTournament:
 
     def myPrint(self, line):
         print(line)
-        self.results_file.write(line)
+        self.results_file.write(line + '\n')
 
     def run(self):
         print(f'\n----- Setup ------\n')
@@ -106,7 +106,7 @@ class CutechessTournament:
         self.results_file = open(self.results_file_name, 'w')
 
         self.myPrint(f'\n----- Tournament Information ------\n')
-        self.myPrint(f'* {self.rounds} rounds with {self.games} games')
+        self.myPrint(f'* {self.mode.rounds} rounds with {self.mode.games} games')
         self.myPrint(f'* Mode = {self.mode.name}')
         self.myPrint(f'* Using opening book') if self.opening_book_path else self.myPrint(f'* Using NO opening book')
 
@@ -115,7 +115,6 @@ class CutechessTournament:
         self.results_file.close()
 
         print(f'\n----- Statistics & after match tasks -----\n')
-        self._getting_statistics()
         self._export_to_json()
 
     def _create_tournament_name(self):
@@ -126,7 +125,7 @@ class CutechessTournament:
         for engine in self.engines[1:]:
             engines_str += f'-{engine.shortname}'
         tournament_name += f'-{engines_str}'
-        tournament_name += f'-{self.rounds}x{self.games}'
+        tournament_name += f'-{self.mode.rounds}x{self.mode.games}'
         tournament_name += f'-{self.mode.name}'
 
         if not self.event_name:
@@ -144,7 +143,7 @@ class CutechessTournament:
     def _create_cutechess_cmd(self):
         print(f'* Creating cutechess command')
         cc_cmd = f'{self.cli_path} -variant {self.uci_variant} -event {self.event_name} ' \
-                 f'-rounds {self.rounds}  -games {self.games} -wait 1000 ' \
+                 f'-rounds {self.mode.rounds}  -games {self.mode.games} -wait 1000 ' \
                  f'-pgnout {self.tournament_name}.pgn -epdout {self.tournament_name}.epd ' \
                  f'-site TU-Darmstadt -recover ' \
                  f'-draw movenumber=40 movecount=5 score=20 ' \
@@ -198,50 +197,11 @@ class CutechessTournament:
         proc.kill()
         time.sleep(1)
 
-    def _getting_statistics(self) -> None:
-        print(f'* Getting statistics')
-        results_file = open(self.results_file_name)
-        lines = results_file.readlines()
-        idx = None
-        for i, l in enumerate(reversed(lines)):
-            if l.startswith('Score of '):
-                idx = len(lines) - i - 1
-        lines = lines[idx:-1]
-
-        stats = {}
-        for line in lines:
-            if line.startswith('Score of '):
-                idx = line.index('vs')
-                idx2 = line.index(':')
-                idx3 = line.index('[')
-                stats['engineA'] = line[9:idx-1]
-                stats['engineB'] = line[idx+3:idx2]
-                stats['win_lose_draw'] = list(map(int, line[idx2+1:idx3].split('-')))
-            if 'playing White: ' in line:
-                idx = line.index(':')
-                idx2 = line.index('[')
-                stats['playing_white'] = list(map(int, line[idx+1:idx2].split('-')))
-            if 'playing Black: ' in line:
-                idx = line.index(':')
-                idx2 = line.index('[')
-                stats['playing_black'] = list(map(int, line[idx+1:idx2].split('-')))
-            if line.startswith('Elo difference'):
-                line = line[line.index(':')+2:]
-                stats['elo_diff'] = float(line[:line.index(' ')])  # can be '-inf', '+inf' or 'float'
-                line = line[line.index('+/-')+4:]
-                stats['elo_dev'] = float(line[:line.index(',')])  # can be 'nan' or 'float'
-                line = line[line.index(':')+2:]
-                stats['los'] = float(line[:line.index(' ')])
-                line = line[line.index(':')+2:]
-                stats['draw_ratio'] = float(line[:line.index(' ')])
-        self.statistics = stats
-
     def _export_to_json(self):
         print(f'* Exporting to JSON')
         json_obj = {'engines': [dataclasses.asdict(x) for x in self.engines],
-                    'uci_variant': self.uci_variant, 'mode': dataclasses.asdict(self.mode), 'games': self.games,
-                    'rounds': self.rounds, 'event_name': self.event_name, 'cli_command': self.cli_command,
-                    'statistics': self.statistics}
+                    'uci_variant': self.uci_variant, 'mode': dataclasses.asdict(self.mode),
+                    'event_name': self.event_name, 'cli_command': self.cli_command}
         if self.opening_book_path:
             json_obj['opening_book'] = os.path.basename(self.opening_book_path)
 

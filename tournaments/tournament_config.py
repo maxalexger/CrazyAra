@@ -2,8 +2,6 @@ from cutechesstournament import Engine, TournamentMode
 
 # =========== CONSTANTS ========== #
 
-MULTIARA_GPU = 1
-
 ARA_BINARY_NAME = f'MultiAra'
 FAIRY_NNUE = {
     f'kingofthehill': f'kingofthehill-581cd1c0b2e5.nnue'
@@ -63,9 +61,7 @@ ARA_ENGINE_UP10 = Engine(
     shortname=f'Ara10',
     binary_name=ARA_BINARY_NAME,
     binary_dir=f'/data/RL/engines/MultiAra-10updates/',
-    version=f'Update10',
-    cli_options=[['First_Device_ID', f'{MULTIARA_GPU}'],
-                 ['Last_Device_ID', f'{MULTIARA_GPU}']]
+    version=f'Update10'
 )
 
 ARA_ENGINE_UP10_FROM0 = Engine(
@@ -73,9 +69,15 @@ ARA_ENGINE_UP10_FROM0 = Engine(
     shortname=f'Ara10From0',
     binary_name=ARA_BINARY_NAME,
     binary_dir=f'/data/RL/engines/MultiAra-10updates-from0/',
-    version=f'Update10From0',
-    cli_options=[['First_Device_ID', f'{MULTIARA_GPU}'],
-                 ['Last_Device_ID', f'{MULTIARA_GPU}']]
+    version=f'Update10From0'
+)
+
+ARA_ENGINE_SL7 = Engine(
+    name=f'MultiAra-SL7',
+    shortname=f'AraSL7',
+    binary_name=ARA_BINARY_NAME,
+    binary_dir=f'/data/RL/engines/MultiAraSL7/',
+    version=f'supervised'
 )
 
 # ========== BOOKS ========== #
@@ -95,15 +97,34 @@ BOOKS = {
 
 RAPID_MODE = TournamentMode(
     name=f'rapid',
+    rounds=50,
     time_control=f'10+0.1'
+)
+
+FAST_MODE = TournamentMode(
+    name=f'fast',
+    rounds=250,
+    games=2,
+    time_control=f'10+0.1'
+)
+
+MEAN_MODE = TournamentMode(
+    name=f'mean',
+    rounds=50,
+    games=2,
+    time_control=f'30+0.3'
 )
 
 LONG_MODE = TournamentMode(
     name=f'long',
+    rounds=50,
+    games=2,
     time_control=f'60+0.6'
 )
 
 FIXED_MODE = TournamentMode(
     name=f'fixed',
+    rounds=50,
+    games=2,
     fixed_movetime_sec=5
 )
