@@ -62,3 +62,7 @@ for v in range(1):
             book = BOOKS_PATH + BOOKS[uci_variant]
         ct = CutechessTournament(CLI_PATH, EXPORT_DIR, uci_variant, engines, mode, book, event_name)
         ct.run()
+
+
+#f'-draw movenumber=40 movecount=5 score=20 ' \
+#f'-resign movecount=5 score=900 twosided=true '
