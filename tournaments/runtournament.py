@@ -43,8 +43,8 @@ for v in range(1):
         # ------ Select ------- #
 
         event_name = None
-        uci_variant = f'racingkings'
-        engines = [ARA_ENGINE_SL7, FAIRY_ENGINE]
+        uci_variant = f'crazyhouse'
+        engines = [ARA_ENGINE_UP10_FROM0_LR04, ARA_ENGINE_UP10_FROM0]
         mode = RAPID_MODE
 
         # ------ Execute ------- #

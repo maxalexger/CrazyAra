@@ -68,8 +68,16 @@ ARA_ENGINE_UP10_FROM0 = Engine(
     name=f'MultiAra10From0',
     shortname=f'Ara10From0',
     binary_name=ARA_BINARY_NAME,
-    binary_dir=f'/data/RL/engines/MultiAra-10updates-from0/',
+    binary_dir=f'/data/RL/engines/MultiAra-from0-10updates/',
     version=f'Update10From0'
+)
+
+ARA_ENGINE_UP10_FROM0_LR04 = Engine(
+    name=f'MultiAra10From0LR04',
+    shortname=f'Ara10From0LR04',
+    binary_name=ARA_BINARY_NAME,
+    binary_dir=f'/data/RL/engines/MultiAra-from0-LR04-10updates/',
+    version=f'Update10From0LR04'
 )
 
 ARA_ENGINE_SL7 = Engine(
