@@ -37,7 +37,7 @@ else:
 variants = ['3check', 'atomic', 'crazyhouse', 'horde', 'kingofthehill']
 modes = [FAST_MODE, LONG_MODE]
 
-for v in range(1):
+for v in range(len(variants)):
     for m in range(1):
 
         # ------ Select ------- #
