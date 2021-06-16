@@ -147,7 +147,7 @@ class CutechessTournament:
                  f'-pgnout {self.tournament_name}.pgn -epdout {self.tournament_name}.epd ' \
                  f'-site TU-Darmstadt -recover '
         if self.opening_book_path:
-            cc_cmd += f'-openings file={self.opening_book_path} format=epd order=sequential plies=5 -repeat '
+            cc_cmd += f'-openings file={self.opening_book_path} format=epd order=random plies=5 -repeat '
         for engine in self.engines:
             cc_cmd += f'-engine name={engine.name} dir={engine.binary_dir} cmd={engine.binary_name} '
             if engine.cli_options:

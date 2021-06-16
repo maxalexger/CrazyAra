@@ -111,7 +111,7 @@ RAPID_MODE = TournamentMode(
 
 FAST_MODE = TournamentMode(
     name=f'fast',
-    rounds=250,
+    rounds=150,
     games=2,
     time_control=f'10+0.1'
 )
