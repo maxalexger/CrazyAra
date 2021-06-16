@@ -145,9 +145,7 @@ class CutechessTournament:
         cc_cmd = f'{self.cli_path} -variant {self.uci_variant} -event {self.event_name} ' \
                  f'-rounds {self.mode.rounds}  -games {self.mode.games} -wait 1000 ' \
                  f'-pgnout {self.tournament_name}.pgn -epdout {self.tournament_name}.epd ' \
-                 f'-site TU-Darmstadt -recover ' \
-                 f'-draw movenumber=40 movecount=5 score=20 ' \
-                 f'-resign movecount=5 score=900 twosided=true '
+                 f'-site TU-Darmstadt -recover '
         if self.opening_book_path:
             cc_cmd += f'-openings file={self.opening_book_path} format=epd order=sequential plies=5 -repeat '
         for engine in self.engines:
