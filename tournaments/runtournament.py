@@ -3,6 +3,7 @@ import datetime
 import os
 import shlex
 import sys
+from rtpt import RTPT
 import argparse
 from subprocess import Popen, PIPE
 from cutechesstournament import CutechessTournament, Engine
@@ -21,6 +22,13 @@ def parse_args(cmd_args: list):
 
 
 args = parse_args(sys.argv[1:])
+
+# ----- RTPT ------- #
+
+rtpt = RTPT(name_initials='MG',
+                 experiment_name=f'MultiAraTournaments',
+                 max_iterations=10)
+rtpt.start()
 
 # ----- Parameter ------- #
 
@@ -63,3 +71,5 @@ for e in range(len(_engines)):
             book = BOOKS_PATH + BOOKS[uci_variant]
         ct = CutechessTournament(CLI_PATH, EXPORT_DIR, uci_variant, engines, mode, book, event_name)
         ct.run()
+
+        rtpt.step()
