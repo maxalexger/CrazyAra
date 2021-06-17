@@ -120,13 +120,13 @@ class CutechessTournament:
     def _create_tournament_name(self):
         print(f'* Creating tournament name')
         tournament_name = self.uci_variant
-        tournament_name += f'-{datetime.datetime.today().strftime("%Y%m%d-%H%M")}'
         engines_str = f'{self.engines[0].shortname}'
         for engine in self.engines[1:]:
             engines_str += f'-{engine.shortname}'
         tournament_name += f'-{engines_str}'
         tournament_name += f'-{self.mode.rounds}x{self.mode.games}'
         tournament_name += f'-{self.mode.name}'
+        tournament_name += f'-{datetime.datetime.today().strftime("%Y%m%d-%H%M")}'
 
         if not self.event_name:
             self.event_name = f'{engines_str}-{self.mode.name}'
