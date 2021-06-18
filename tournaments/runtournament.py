@@ -44,7 +44,13 @@ else:
 
 variants = ['3check', 'atomic', 'crazyhouse', 'horde', 'kingofthehill']
 modes = [FAST_MODE, LONG_MODE]
-_engines = [ARA_ENGINE_UP20, ARA_ENGINE_UP30, ARA_ENGINE_UP40, ARA_ENGINE_UP50, ARA_ENGINE_UP60]
+_engines = [[ARA_ENGINE_SL7, ARA_ENGINE_UP10],
+            [ARA_ENGINE_UP10, ARA_ENGINE_UP20],
+            [ARA_ENGINE_UP20, ARA_ENGINE_UP30],
+            [ARA_ENGINE_UP30, ARA_ENGINE_UP40],
+            [ARA_ENGINE_UP40, ARA_ENGINE_UP50],
+            [ARA_ENGINE_UP50, ARA_ENGINE_UP60],
+            [ARA_ENGINE_SL7, ARA_ENGINE_UP60]]
 
 for e in range(len(_engines)):
     for m in range(2):
@@ -53,7 +59,7 @@ for e in range(len(_engines)):
 
         event_name = None
         uci_variant = 'kingofthehill'
-        engines = [_engines[e], FAIRY_ENGINE]
+        engines = _engines[e]
         mode = modes[m]
 
         # ------ Execute ------- #
