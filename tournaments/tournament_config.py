@@ -35,6 +35,14 @@ ARA_ENGINE_UP10_LOCAL = Engine(
     version=f'Update10'
 )
 
+ARA_ENGINE_UP20_LOCAL = Engine(
+    name=f'MultiAra20',
+    shortname=f'Ara20',
+    binary_name=ARA_BINARY_NAME,
+    binary_dir=f'/home/maxalex/Documents/Engines/MultiAra-20updates/',
+    version=f'Update20'
+)
+
 ARA_ENGINE_UP10_FROM0_LOCAL = Engine(
     name=f'MultiAra10From0',
     shortname=f'Ara10From0',
