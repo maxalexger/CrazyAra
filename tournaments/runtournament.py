@@ -42,13 +42,13 @@ else:
     CLI_PATH = f'/data/RL/cutechess-cli/cutechess-cli'
 
 
-variants = ['antichess', 'horde']
+variants = ['horde']
 modes = [FAST_MODE, LONG_MODE]
 _engines = [[ARA_ENGINE_SL7, ARA_ENGINE_UP10],
             [ARA_ENGINE_UP10, ARA_ENGINE_UP20],
             [ARA_ENGINE_UP20, ARA_ENGINE_UP30]]
 
-for v in range(2):
+for v in range(1):
     for e in range(3):
         for m in range(2):
 
