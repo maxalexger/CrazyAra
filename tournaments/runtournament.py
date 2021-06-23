@@ -44,10 +44,11 @@ else:
 
 variants = ['antichess', 'crazyhouse', '3check', 'atomic', 'kingofthehill', 'horde', 'racingkings']
 modes = [FAST_MODE, LONG_MODE]
-_engines = [[ARA_ENGINE_UP10, FAIRY_ENGINE]]
+_engines = [[ARA_ENGINE_SL7, FAIRY_ENGINE],
+            [ARA_ENGINE_UP10, FAIRY_ENGINE]]
 
 for v in range(1):
-    for e in range(1):
+    for e in range(2):
         for m in range(1):
 
             # ------ Select ------- #
