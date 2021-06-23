@@ -72,7 +72,7 @@ for v in range(2):
             book = None
             if uci_variant in BOOKS.keys():
                 book = BOOKS_PATH + BOOKS[uci_variant]
-            ct = CutechessTournament(CLI_PATH, EXPORT_DIR, uci_variant, engines, mode, book, event_name)
+            ct = CutechessTournament(CLI_PATH, EXPORT_DIR, uci_variant, engines, mode, book, event_name, args.local)
             ct.run()
 
             rtpt.step()

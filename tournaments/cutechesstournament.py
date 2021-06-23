@@ -69,7 +69,7 @@ class TournamentMode:
 
 class CutechessTournament:
     def __init__(self, cli_path: str, export_dir: str, uci_variant: str, engines: List[Engine],
-                 mode: TournamentMode, opening_book_path: str = None, event_name: str = None):
+                 mode: TournamentMode, opening_book_path: str = None, event_name: str = None, local: bool = False):
         self.cli_path = cli_path
         self.export_dir = export_dir
         self.uci_variant = uci_variant
@@ -77,6 +77,7 @@ class CutechessTournament:
         self.mode = mode
         self.opening_book_path = opening_book_path
         self.event_name = event_name
+        self.local = local
 
         self.tournament_name = None
         self.tournament_dir = None
@@ -177,6 +178,7 @@ class CutechessTournament:
         proc = Popen(shlex.split(self.cli_command), stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=False)
         proc.stdin.flush()
 
+        line_ctr = 0
         while True:
             line = proc.stdout.readline()
             if line == b'':
@@ -188,9 +190,12 @@ class CutechessTournament:
                     break
             line = line.decode()
             self.results_file.write(line)
-            print(line.rstrip(f'\n'))
+            if self.local or line_ctr < 5:
+                print(line.rstrip(f'\n'))
             if line == 'Finished match\n':
                 break
+
+            line_ctr += 1
 
         proc.kill()
         time.sleep(1)
