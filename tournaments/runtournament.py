@@ -48,7 +48,7 @@ _engines = [[ARA_ENGINE_SL7, FAIRY_ENGINE]]
 
 for v in range(len(variants)):
     for e in range(1):
-        for m in range(2):
+        for m in range(1):
 
             # ------ Select ------- #
 
