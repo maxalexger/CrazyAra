@@ -190,7 +190,7 @@ class CutechessTournament:
                     break
             line = line.decode()
             self.results_file.write(line)
-            if self.local or line_ctr < 5:
+            if self.local or line_ctr <= 10:
                 print(line.rstrip(f'\n'))
             if line == 'Finished match\n':
                 break
