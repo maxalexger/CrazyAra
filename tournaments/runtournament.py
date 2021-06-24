@@ -42,35 +42,44 @@ else:
     CLI_PATH = f'/data/RL/cutechess-cli/cutechess-cli'
 
 
-variants = ['antichess', 'atomic', 'crazyhouse', 'kingofthehill', 'racingkings', 'horde', '3check', 'chess960']
-modes = [FAST_MODE, LONG_MODE]
-_engines = [[ARA_ENGINE_UP20, ARA_ENGINE_UP30]]
+# variants = ['antichess', 'atomic', 'crazyhouse', 'kingofthehill', 'racingkings', 'horde', '3check', 'chess960']
+# modes = [FAST_MODE, LONG_MODE]
+# _engines = [[ARA_ENGINE_UP20, ARA_ENGINE_UP30]]
 
-for v in range(1):
-    for e in range(1):
-        for m in range(2):
+setup = [
+    ['atomic', [ARA_ENGINE_UP10, FAIRY_ENGINE], LONG_MODE],
+    ['3check', [ARA_ENGINE_SL7, FAIRY_ENGINE], LONG_MODE],
+    ['chess960', [ARA_ENGINE_SL7, FAIRY_ENGINE], LONG_MODE],
+    ['horde', [ARA_ENGINE_SL7, FAIRY_ENGINE], LONG_MODE],
+    ['racingkings', [ARA_ENGINE_SL7, FAIRY_ENGINE], LONG_MODE],
+    ['chess960', [ARA_ENGINE_SL7, FAIRY_ENGINE], FAST_MODE],
+    ['kingofthehill', [ARA_ENGINE_UP10, FAIRY_ENGINE], LONG_MODE]
+]
 
-            # ------ Select ------- #
 
-            event_name = None
-            uci_variant = 'horde'
-            engines = _engines[e]
-            mode = modes[m]
+for s in setup:
 
-            # ------ Execute ------- #
+    # ------ Select ------- #
 
-            for engine in engines:
-                # insert gpu-id dynamically
-                if not args.local and engine.binary_name == 'MultiAra':
-                    engine.cli_options = [['Threads', '3'],
-                                          ['First_Device_ID', f'{args.gpu}'],
-                                          ['Last_Device_ID', f'{args.gpu}']]
-                engine.initialize(uci_variant)
+    event_name = None
+    uci_variant = s[0]
+    engines = s[1]
+    mode = s[2]
 
-            book = None
-            if uci_variant in BOOKS.keys():
-                book = BOOKS_PATH + BOOKS[uci_variant]
-            ct = CutechessTournament(CLI_PATH, EXPORT_DIR, uci_variant, engines, mode, book, event_name, args.local)
-            ct.run()
+    # ------ Execute ------- #
 
-            rtpt.step()
+    for engine in engines:
+        # insert gpu-id dynamically
+        if not args.local and engine.binary_name == 'MultiAra':
+            engine.cli_options = [['Threads', '3'],
+                                  ['First_Device_ID', f'{args.gpu}'],
+                                  ['Last_Device_ID', f'{args.gpu}']]
+        engine.initialize(uci_variant)
+
+    book = None
+    if uci_variant in BOOKS.keys():
+        book = BOOKS_PATH + BOOKS[uci_variant]
+    ct = CutechessTournament(CLI_PATH, EXPORT_DIR, uci_variant, engines, mode, book, event_name, args.local)
+    ct.run()
+
+        rtpt.step()
