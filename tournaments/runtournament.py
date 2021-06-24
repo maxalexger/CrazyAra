@@ -82,4 +82,4 @@ for s in setup:
     ct = CutechessTournament(CLI_PATH, EXPORT_DIR, uci_variant, engines, mode, book, event_name, args.local)
     ct.run()
 
-        rtpt.step()
+    rtpt.step()
