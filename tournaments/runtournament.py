@@ -44,18 +44,18 @@ else:
 
 variants = ['antichess', 'atomic', 'crazyhouse', 'kingofthehill', 'racingkings', 'horde', '3check', 'chess960']
 modes = [FAST_MODE, LONG_MODE]
-_engines = [[ARA_ENGINE_SL7, FAIRY_ENGINE]]
+_engines = [[ARA_ENGINE_UP20, ARA_ENGINE_UP30]]
 
-for v in range(len(variants)):
+for v in range(1):
     for e in range(1):
-        for m in range(1):
+        for m in range(2):
 
             # ------ Select ------- #
 
             event_name = None
-            uci_variant = variants[v]
+            uci_variant = 'horde'
             engines = _engines[e]
-            mode = LONG_MODE
+            mode = modes[m]
 
             # ------ Execute ------- #
 
