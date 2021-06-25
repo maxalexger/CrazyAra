@@ -47,13 +47,8 @@ else:
 # _engines = [[ARA_ENGINE_UP20, ARA_ENGINE_UP30]]
 
 setup = [
-    ['atomic', [ARA_ENGINE_UP10, FAIRY_ENGINE], LONG_MODE],
-    ['3check', [ARA_ENGINE_SL7, FAIRY_ENGINE], LONG_MODE],
     ['chess960', [ARA_ENGINE_SL7, FAIRY_ENGINE], LONG_MODE],
-    ['horde', [ARA_ENGINE_SL7, FAIRY_ENGINE], LONG_MODE],
-    ['racingkings', [ARA_ENGINE_SL7, FAIRY_ENGINE], LONG_MODE],
-    ['chess960', [ARA_ENGINE_SL7, FAIRY_ENGINE], FAST_MODE],
-    ['kingofthehill', [ARA_ENGINE_UP10, FAIRY_ENGINE], LONG_MODE]
+    ['chess960', [ARA_ENGINE_SL7, FAIRY_ENGINE], FAST_MODE]
 ]
 
 
