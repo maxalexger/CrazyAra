@@ -47,8 +47,16 @@ else:
 # _engines = [[ARA_ENGINE_UP20, ARA_ENGINE_UP30]]
 
 setup = [
-    ['fischerandom', [ARA_ENGINE_SL7, FAIRY_ENGINE], LONG_MODE],
-    ['fischerandom', [ARA_ENGINE_SL7, FAIRY_ENGINE], FAST_MODE]
+    ['3check', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], FAST_MODE],
+    ['3check', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], LONG_MODE],
+    ['3check', [ARA_ENGINE_UP10, ARA_ENGINE_UP20], FAST_MODE],
+    ['3check', [ARA_ENGINE_UP10, ARA_ENGINE_UP20], LONG_MODE],
+    ['crazyhouse', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], FAST_MODE],
+    ['crazyhouse', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], LONG_MODE],
+    ['crazyhouse', [ARA_ENGINE_UP10, ARA_ENGINE_UP20], FAST_MODE],
+    ['crazyhouse', [ARA_ENGINE_UP10, ARA_ENGINE_UP20], LONG_MODE],
+    ['atomic', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], FAST_MODE],
+    ['atomic', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], LONG_MODE],
 ]
 
 
