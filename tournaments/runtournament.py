@@ -47,8 +47,8 @@ else:
 # _engines = [[ARA_ENGINE_UP20, ARA_ENGINE_UP30]]
 
 setup = [
-    ['chess960', [ARA_ENGINE_SL7, FAIRY_ENGINE], LONG_MODE],
-    ['chess960', [ARA_ENGINE_SL7, FAIRY_ENGINE], FAST_MODE]
+    ['fischerandom', [ARA_ENGINE_SL7, FAIRY_ENGINE], LONG_MODE],
+    ['fischerandom', [ARA_ENGINE_SL7, FAIRY_ENGINE], FAST_MODE]
 ]
 
 
