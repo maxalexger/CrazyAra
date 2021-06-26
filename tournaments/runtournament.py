@@ -46,21 +46,34 @@ else:
 # modes = [FAST_MODE, LONG_MODE]
 # _engines = [[ARA_ENGINE_UP20, ARA_ENGINE_UP30]]
 
-setup = [
-    ['3check', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], FAST_MODE],
-    ['3check', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], LONG_MODE],
-    ['3check', [ARA_ENGINE_UP10, ARA_ENGINE_UP20], FAST_MODE],
-    ['3check', [ARA_ENGINE_UP10, ARA_ENGINE_UP20], LONG_MODE],
-    ['crazyhouse', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], FAST_MODE],
-    ['crazyhouse', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], LONG_MODE],
-    ['crazyhouse', [ARA_ENGINE_UP10, ARA_ENGINE_UP20], FAST_MODE],
-    ['crazyhouse', [ARA_ENGINE_UP10, ARA_ENGINE_UP20], LONG_MODE],
-    ['atomic', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], FAST_MODE],
-    ['atomic', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], LONG_MODE],
-]
+setup = {
+    11: [
+        ['3check', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], FAST_MODE],
+        ['3check', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], LONG_MODE],
+        ['3check', [ARA_ENGINE_UP10, ARA_ENGINE_UP20], FAST_MODE],
+        ['3check', [ARA_ENGINE_UP10, ARA_ENGINE_UP20], LONG_MODE],
+        ['crazyhouse', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], FAST_MODE],
+        ['crazyhouse', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], LONG_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP10, ARA_ENGINE_UP20], FAST_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP10, ARA_ENGINE_UP20], LONG_MODE],
+        ['atomic', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], FAST_MODE],
+        ['atomic', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], LONG_MODE],
+    ],
+    10: [
+        ['3check', [ARA_ENGINE_UP10, FAIRY_ENGINE], LONG_MODE],
+        ['3check', [ARA_ENGINE_UP20, FAIRY_ENGINE], FAST_MODE],
+        ['3check', [ARA_ENGINE_UP20, FAIRY_ENGINE], LONG_MODE],
+        ['3check', [ARA_ENGINE_UP30, FAIRY_ENGINE], FAST_MODE],
+        ['3check', [ARA_ENGINE_UP30, FAIRY_ENGINE], LONG_MODE],
+        ['antichess', [ARA_ENGINE_UP10, FAIRY_ENGINE], LONG_MODE],
+        ['antichess', [ARA_ENGINE_UP20, FAIRY_ENGINE], FAST_MODE],
+        ['antichess', [ARA_ENGINE_UP20, FAIRY_ENGINE], LONG_MODE],
+        ['antichess', [ARA_ENGINE_UP30, FAIRY_ENGINE], FAST_MODE],
+        ['antichess', [ARA_ENGINE_UP30, FAIRY_ENGINE], LONG_MODE]
+    ]
+}
 
-
-for s in setup:
+for s in setup[args.gpu]:
 
     # ------ Select ------- #
 
