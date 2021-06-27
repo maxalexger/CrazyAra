@@ -47,41 +47,32 @@ else:
 # _engines = [[ARA_ENGINE_UP20, ARA_ENGINE_UP30]]
 
 setup = {
+    0: [
+        ['Proxy Line for local runs']
+    ],
     11: [
-        ['3check', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], FAST_MODE],
-        ['3check', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], LONG_MODE],
-        ['3check', [ARA_ENGINE_UP10, ARA_ENGINE_UP20], FAST_MODE],
-        ['3check', [ARA_ENGINE_UP10, ARA_ENGINE_UP20], LONG_MODE],
-        ['crazyhouse', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], FAST_MODE],
-        ['crazyhouse', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], LONG_MODE],
-        ['crazyhouse', [ARA_ENGINE_UP10, ARA_ENGINE_UP20], FAST_MODE],
-        ['crazyhouse', [ARA_ENGINE_UP10, ARA_ENGINE_UP20], LONG_MODE],
-        ['atomic', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], FAST_MODE],
-        ['atomic', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], LONG_MODE],
+        ['antichess', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], LONG_MODE],
+        ['antichess', [ARA_ENGINE_UP20, ARA_ENGINE_UP30], FAST_MODE],
+        ['antichess', [ARA_ENGINE_UP20, ARA_ENGINE_UP30], LONG_MODE],
+        ['3check', [ARA_ENGINE_UP20, ARA_ENGINE_UP30], FAST_MODE],
+        ['3check', [ARA_ENGINE_UP20, ARA_ENGINE_UP30], LONG_MODE],
     ],
     10: [
-        ['3check', [ARA_ENGINE_UP10, FAIRY_ENGINE], LONG_MODE],
-        ['3check', [ARA_ENGINE_UP20, FAIRY_ENGINE], FAST_MODE],
-        ['3check', [ARA_ENGINE_UP20, FAIRY_ENGINE], LONG_MODE],
-        ['3check', [ARA_ENGINE_UP30, FAIRY_ENGINE], FAST_MODE],
-        ['3check', [ARA_ENGINE_UP30, FAIRY_ENGINE], LONG_MODE],
-        ['antichess', [ARA_ENGINE_UP10, FAIRY_ENGINE], LONG_MODE],
-        ['antichess', [ARA_ENGINE_UP20, FAIRY_ENGINE], FAST_MODE],
-        ['antichess', [ARA_ENGINE_UP20, FAIRY_ENGINE], LONG_MODE],
-        ['antichess', [ARA_ENGINE_UP30, FAIRY_ENGINE], FAST_MODE],
-        ['antichess', [ARA_ENGINE_UP30, FAIRY_ENGINE], LONG_MODE]
+        ['antichess', [ARA_ENGINE_UP30, ARA_ENGINE_UP40], FAST_MODE],
+        ['antichess', [ARA_ENGINE_UP30, ARA_ENGINE_UP40], LONG_MODE],
+        ['antichess', [ARA_ENGINE_UP40, FAIRY_ENGINE], FAST_MODE],
+        ['antichess', [ARA_ENGINE_UP40, FAIRY_ENGINE], LONG_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP20, ARA_ENGINE_UP30], FAST_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP20, ARA_ENGINE_UP30], LONG_MODE],
     ],
     9: [
-        ['atomic', [ARA_ENGINE_UP20, FAIRY_ENGINE], FAST_MODE],
-        ['atomic', [ARA_ENGINE_UP20, FAIRY_ENGINE], LONG_MODE],
-        ['atomic', [ARA_ENGINE_UP10, ARA_ENGINE_UP20], FAST_MODE],
-        ['atomic', [ARA_ENGINE_UP10, ARA_ENGINE_UP20], LONG_MODE],
-        ['horde', [ARA_ENGINE_UP10, FAIRY_ENGINE], LONG_MODE],
-        ['horde', [ARA_ENGINE_UP20, FAIRY_ENGINE], FAST_MODE],
-        ['horde', [ARA_ENGINE_UP20, FAIRY_ENGINE], LONG_MODE]
+        ['crazyhouse', [ARA_ENGINE_UP10, FAIRY_ENGINE], LONG_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP20, FAIRY_ENGINE], FAST_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP20, FAIRY_ENGINE], LONG_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP30, FAIRY_ENGINE], FAST_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP30, FAIRY_ENGINE], LONG_MODE],
     ],
     6: [
-        ['horde', [ARA_ENGINE_UP30, FAIRY_ENGINE], FAST_MODE],
         ['horde', [ARA_ENGINE_UP30, FAIRY_ENGINE], LONG_MODE],
         ['racingkings', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], FAST_MODE],
         ['racingkings', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], LONG_MODE],
@@ -93,11 +84,16 @@ setup = {
 for s in setup[args.gpu]:
 
     # ------ Select ------- #
-
-    event_name = None
-    uci_variant = s[0]
-    engines = s[1]
-    mode = s[2]
+    if args.local:
+        event_name = None
+        uci_variant = 'racingkings'
+        engines = [ARA_ENGINE_RACING_LOCAL, ARA_ENGINE_UP20_LOCAL]
+        mode = RAPID_MODE
+    else:
+        event_name = None
+        uci_variant = s[0]
+        engines = s[1]
+        mode = s[2]
 
     # ------ Execute ------- #
 

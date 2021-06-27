@@ -51,6 +51,15 @@ ARA_ENGINE_UP10_FROM0_LOCAL = Engine(
     version=f'Update10From0',
 )
 
+ARA_ENGINE_RACING_LOCAL = Engine(
+    name=f'MultiAraRacing',
+    shortname=f'AraRacing',
+    binary_name=ARA_BINARY_NAME,
+    binary_dir=f'/home/maxalex/Documents/Engines/MultiAraRacing/',
+    version=f'AraRacing',
+)
+
+
 
 # ========== SERVER ========== #
 
