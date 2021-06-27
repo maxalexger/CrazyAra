@@ -65,19 +65,12 @@ setup = {
         ['crazyhouse', [ARA_ENGINE_UP20, ARA_ENGINE_UP30], FAST_MODE],
         ['crazyhouse', [ARA_ENGINE_UP20, ARA_ENGINE_UP30], LONG_MODE],
     ],
-    9: [
+    6: [
         ['crazyhouse', [ARA_ENGINE_UP10, FAIRY_ENGINE], LONG_MODE],
         ['crazyhouse', [ARA_ENGINE_UP20, FAIRY_ENGINE], FAST_MODE],
         ['crazyhouse', [ARA_ENGINE_UP20, FAIRY_ENGINE], LONG_MODE],
         ['crazyhouse', [ARA_ENGINE_UP30, FAIRY_ENGINE], FAST_MODE],
         ['crazyhouse', [ARA_ENGINE_UP30, FAIRY_ENGINE], LONG_MODE],
-    ],
-    6: [
-        ['horde', [ARA_ENGINE_UP30, FAIRY_ENGINE], LONG_MODE],
-        ['racingkings', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], FAST_MODE],
-        ['racingkings', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], LONG_MODE],
-        ['racingkings', [ARA_ENGINE_UP10, ARA_ENGINE_UP20], FAST_MODE],
-        ['racingkings', [ARA_ENGINE_UP10, ARA_ENGINE_UP20], LONG_MODE]
     ]
 }
 
