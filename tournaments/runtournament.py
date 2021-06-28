@@ -8,7 +8,7 @@ import argparse
 from subprocess import Popen, PIPE
 from cutechesstournament import CutechessTournament, Engine
 from tournament_config import *
-
+from datetime import datetime
 
 # ----- ARGS ------- #
 def parse_args(cmd_args: list):
@@ -36,45 +36,33 @@ if args.local:
     BOOKS_PATH = f'/home/maxalex/Git/books/'
     EXPORT_DIR = f'/home/maxalex/Documents/Cutechess-Tournaments/'
     CLI_PATH = f'/home/maxalex/Git/cutechess/projects/cli/cutechess-cli'
+    WORKING_DIR = f'/home/maxalex/Documents/Cutechess-Tournaments/'
 else:
     BOOKS_PATH = f'/data/RL/books/'
     EXPORT_DIR = f'/data/RL/tournaments/'
     CLI_PATH = f'/data/RL/cutechess-cli/cutechess-cli'
+    WORKING_DIR = f'/data/RL/' # only used for logs atm
 
-
-# variants = ['antichess', 'atomic', 'crazyhouse', 'kingofthehill', 'racingkings', 'horde', '3check', 'chess960']
-# modes = [FAST_MODE, LONG_MODE]
-# _engines = [[ARA_ENGINE_UP20, ARA_ENGINE_UP30]]
 
 setup = {
     0: [
         ['Proxy Line for local runs']
     ],
     11: [
-        ['antichess', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], LONG_MODE],
-        ['antichess', [ARA_ENGINE_UP20, ARA_ENGINE_UP30], FAST_MODE],
-        ['antichess', [ARA_ENGINE_UP20, ARA_ENGINE_UP30], LONG_MODE],
-        ['3check', [ARA_ENGINE_UP20, ARA_ENGINE_UP30], FAST_MODE],
-        ['3check', [ARA_ENGINE_UP20, ARA_ENGINE_UP30], LONG_MODE],
+        ['antichess', [ARA_ENGINE_UP50, FAIRY_ENGINE], FAST_MODE],
+        ['antichess', [ARA_ENGINE_UP50, FAIRY_ENGINE], LONG_MODE],
+        ['antichess', [ARA_ENGINE_UP40, ARA_ENGINE_UP50], FAST_MODE],
+        ['antichess', [ARA_ENGINE_UP40, ARA_ENGINE_UP50], LONG_MODE],
     ],
     10: [
-        ['antichess', [ARA_ENGINE_UP30, ARA_ENGINE_UP40], FAST_MODE],
-        ['antichess', [ARA_ENGINE_UP30, ARA_ENGINE_UP40], LONG_MODE],
-        ['antichess', [ARA_ENGINE_UP40, FAIRY_ENGINE], FAST_MODE],
-        ['antichess', [ARA_ENGINE_UP40, FAIRY_ENGINE], LONG_MODE],
-        ['crazyhouse', [ARA_ENGINE_UP20, ARA_ENGINE_UP30], FAST_MODE],
-        ['crazyhouse', [ARA_ENGINE_UP20, ARA_ENGINE_UP30], LONG_MODE],
+
     ],
     6: [
-        ['crazyhouse', [ARA_ENGINE_UP10, FAIRY_ENGINE], LONG_MODE],
-        ['crazyhouse', [ARA_ENGINE_UP20, FAIRY_ENGINE], FAST_MODE],
-        ['crazyhouse', [ARA_ENGINE_UP20, FAIRY_ENGINE], LONG_MODE],
-        ['crazyhouse', [ARA_ENGINE_UP30, FAIRY_ENGINE], FAST_MODE],
-        ['crazyhouse', [ARA_ENGINE_UP30, FAIRY_ENGINE], LONG_MODE],
+
     ]
 }
 
-for s in setup[args.gpu]:
+for i, s in enumerate(setup[args.gpu]):
 
     # ------ Select ------- #
     if args.local:
@@ -87,6 +75,15 @@ for s in setup[args.gpu]:
         uci_variant = s[0]
         engines = s[1]
         mode = s[2]
+
+    # ------ Log ------- #
+
+    engine_str = engines[0].name
+    for e in engines[1:]:
+        engine_str += ' vs. ' + e.name
+    with open(f'{WORKING_DIR}/gpu_{args.gpu}.log', 'a+') as f:
+        f.write(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}: '
+                f'{uci_variant} - {engine_str} - {mode.name} [{i+1}/{len(setup[args.gpu])}]\n')
 
     # ------ Execute ------- #
 
