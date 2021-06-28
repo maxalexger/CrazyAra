@@ -67,6 +67,18 @@ setup = {
         ['crazyhouse', [ARA_ENGINE_UP30, CRAZYARA_ENGINE], FAST_MODE],
         ['crazyhouse', [ARA_ENGINE_UP30, CRAZYARA_ENGINE], LONG_MODE],
         ['crazyhouse', [ARA_ENGINE_UP40, CRAZYARA_ENGINE], FAST_MODE],
+    ],
+    9: [
+        ['crazyhouse', [ARA_ENGINE_UP30, ARA_ENGINE_UP40], FAST_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP30, ARA_ENGINE_UP40], LONG_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP40, FAIRY_ENGINE], FAST_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP40, FAIRY_ENGINE], LONG_MODE],
+        ['atomic', [ARA_ENGINE_UP20, ARA_ENGINE_UP30], FAST_MODE],
+    ],
+    4: [
+        ['atomic', [ARA_ENGINE_UP20, ARA_ENGINE_UP30], LONG_MODE],
+        ['atomic', [ARA_ENGINE_UP30, FAIRY_ENGINE], FAST_MODE],
+        ['atomic', [ARA_ENGINE_UP30, FAIRY_ENGINE], LONG_MODE],
     ]
 }
 
