@@ -140,6 +140,14 @@ ARA_ENGINE_SL7 = Engine(
     version=f'supervised'
 )
 
+CRAZYARA_ENGINE = Engine(
+    name=f'CrazyAra96',
+    shortname=f'Crazy96',
+    binary_name='CrazyAra',
+    binary_dir=f'/data/RL/engines/CrazyAra96/',
+    version=f'Crazy96'
+)
+
 # ========== BOOKS ========== #
 
 BOOKS = {

@@ -55,10 +55,18 @@ setup = {
         ['antichess', [ARA_ENGINE_UP40, ARA_ENGINE_UP50], LONG_MODE],
     ],
     10: [
-
+        ['crazyhouse', [ARA_ENGINE_SL7, CRAZYARA_ENGINE], FAST_MODE],
+        ['crazyhouse', [ARA_ENGINE_SL7, CRAZYARA_ENGINE], LONG_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP10, CRAZYARA_ENGINE], FAST_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP10, CRAZYARA_ENGINE], LONG_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP40, CRAZYARA_ENGINE], LONG_MODE],
     ],
     6: [
-
+        ['crazyhouse', [ARA_ENGINE_UP20, CRAZYARA_ENGINE], FAST_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP20, CRAZYARA_ENGINE], LONG_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP30, CRAZYARA_ENGINE], FAST_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP30, CRAZYARA_ENGINE], LONG_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP40, CRAZYARA_ENGINE], FAST_MODE],
     ]
 }
 
@@ -89,7 +97,7 @@ for i, s in enumerate(setup[args.gpu]):
 
     for engine in engines:
         # insert gpu-id dynamically
-        if not args.local and engine.binary_name == 'MultiAra':
+        if not args.local and (engine.binary_name == 'MultiAra' or engine.binary_name == 'CrazyAra'):
             engine.cli_options = [['Threads', '3'],
                                   ['First_Device_ID', f'{args.gpu}'],
                                   ['Last_Device_ID', f'{args.gpu}']]
