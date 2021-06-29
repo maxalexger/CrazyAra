@@ -94,6 +94,13 @@ ARA_ENGINE_UP30 = Engine(
     binary_dir=f'/data/RL/engines/MultiAra-30updates/',
     version=f'Update30'
 )
+ARA_ENGINE_UP30_MCTS = Engine(
+    name=f'MultiAra30MCTS',
+    shortname=f'Ara30MCTS',
+    binary_name=ARA_BINARY_NAME,
+    binary_dir=f'/data/RL/engines/MultiAra-30updates/',
+    version=f'Update30MCTS'
+)
 ARA_ENGINE_UP40 = Engine(
     name=f'MultiAra40',
     shortname=f'Ara40',

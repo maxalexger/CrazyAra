@@ -49,10 +49,7 @@ setup = {
         ['Proxy Line for local runs']
     ],
     11: [
-        ['antichess', [ARA_ENGINE_UP50, FAIRY_ENGINE], FAST_MODE],
-        ['antichess', [ARA_ENGINE_UP50, FAIRY_ENGINE], LONG_MODE],
-        ['antichess', [ARA_ENGINE_UP40, ARA_ENGINE_UP50], FAST_MODE],
-        ['antichess', [ARA_ENGINE_UP40, ARA_ENGINE_UP50], LONG_MODE],
+        ['atomic', [ARA_ENGINE_UP30, ARA_ENGINE_UP30_MCTS], FAST_MODE]
     ],
     10: [
         ['crazyhouse', [ARA_ENGINE_SL7, CRAZYARA_ENGINE], FAST_MODE],
@@ -110,9 +107,16 @@ for i, s in enumerate(setup[args.gpu]):
     for engine in engines:
         # insert gpu-id dynamically
         if not args.local and (engine.binary_name == 'MultiAra' or engine.binary_name == 'CrazyAra'):
-            engine.cli_options = [['Threads', '3'],
-                                  ['First_Device_ID', f'{args.gpu}'],
-                                  ['Last_Device_ID', f'{args.gpu}']]
+            if 'MCTS' in engine.version:
+                engine.cli_options = [['Threads', '3'],
+                                      ['First_Device_ID', f'{args.gpu}'],
+                                      ['Last_Device_ID', f'{args.gpu}'],
+                                      ['Search_Type', f'mcts']]
+                mode.rounds = 500  # TODO: Delete
+            else:
+                engine.cli_options = [['Threads', '3'],
+                                      ['First_Device_ID', f'{args.gpu}'],
+                                      ['Last_Device_ID', f'{args.gpu}']]
         engine.initialize(uci_variant)
 
     book = None
