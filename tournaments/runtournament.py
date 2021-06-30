@@ -49,29 +49,10 @@ setup = {
         ['Proxy Line for local runs']
     ],
     11: [
-        ['atomic', [ARA_ENGINE_UP30, ARA_ENGINE_UP30_MCTS], LONG_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP10_FROM0, FAIRY_ENGINE], LONG_MODE],
-    ],
-    10: [
-        ['kingofthehill', [ARA_ENGINE_UP10_FROM0, ARA_ENGINE_UP20_FROM0], FAST_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP10_FROM0, ARA_ENGINE_UP20_FROM0], LONG_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP10_FROM0, ARA_ENGINE_SL7], FAST_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP10_FROM0, ARA_ENGINE_SL7], LONG_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP10_FROM0, FAIRY_ENGINE], FAST_MODE],
-    ],
-    9: [
-        ['kingofthehill', [ARA_ENGINE_UP20_FROM0, FAIRY_ENGINE], FAST_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP20_FROM0, FAIRY_ENGINE], LONG_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP10_FROM0, ARA_ENGINE_UP10], FAST_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP10_FROM0, ARA_ENGINE_UP10], LONG_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP20_FROM0, ARA_ENGINE_UP20], FAST_MODE],
-    ],
-    13: [
-        ['antichess', [ARA_ENGINE_UP50, ARA_ENGINE_UP60], FAST_MODE],
-        ['antichess', [ARA_ENGINE_UP50, ARA_ENGINE_UP60], LONG_MODE],
-        ['antichess', [ARA_ENGINE_UP50, FAIRY_ENGINE], FAST_MODE],
-        ['antichess', [ARA_ENGINE_UP50, FAIRY_ENGINE], LONG_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP20_FROM0, ARA_ENGINE_UP20], LONG_MODE],
+        ['antichess', [ARA_ENGINE_UP60, FAIRY_ENGINE], FAST_MODE],
+        ['antichess', [ARA_ENGINE_UP60, FAIRY_ENGINE], LONG_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP20_FROM0, ARA_ENGINE_SL7], FAST_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP20_FROM0, ARA_ENGINE_SL7], LONG_MODE],
     ]
 
 }
