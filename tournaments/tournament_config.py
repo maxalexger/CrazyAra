@@ -138,6 +138,34 @@ ARA_ENGINE_UP20_FROM0 = Engine(
     binary_dir=f'/data/RL/engines/MultiAra-from0-20updates/',
     version=f'Update20From0'
 )
+ARA_ENGINE_UP30_FROM0 = Engine(
+    name=f'MultiAra30From0',
+    shortname=f'Ara30From0',
+    binary_name=ARA_BINARY_NAME,
+    binary_dir=f'/data/RL/engines/MultiAra-from0-30updates/',
+    version=f'Update30From0'
+)
+ARA_ENGINE_UP40_FROM0 = Engine(
+    name=f'MultiAra40From0',
+    shortname=f'Ara40From0',
+    binary_name=ARA_BINARY_NAME,
+    binary_dir=f'/data/RL/engines/MultiAra-from0-40updates/',
+    version=f'Update40From0'
+)
+ARA_ENGINE_UP50_FROM0 = Engine(
+    name=f'MultiAra50From0',
+    shortname=f'Ara50From0',
+    binary_name=ARA_BINARY_NAME,
+    binary_dir=f'/data/RL/engines/MultiAra-from0-50updates/',
+    version=f'Update50From0'
+)
+ARA_ENGINE_UP60_FROM0 = Engine(
+    name=f'MultiAra60From0',
+    shortname=f'Ara60From0',
+    binary_name=ARA_BINARY_NAME,
+    binary_dir=f'/data/RL/engines/MultiAra-from0-60updates/',
+    version=f'Update60From0'
+)
 
 ARA_ENGINE_UP10_FROM0_LR04 = Engine(
     name=f'MultiAra10From0LR04',
@@ -155,7 +183,7 @@ ARA_ENGINE_SL7 = Engine(
     version=f'supervised'
 )
 
-CRAZYARA_ENGINE = Engine(
+CRAZYARA96_ENGINE = Engine(
     name=f'CrazyAra96',
     shortname=f'Crazy96',
     binary_name='CrazyAra',

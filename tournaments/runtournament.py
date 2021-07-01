@@ -48,11 +48,13 @@ setup = {
     0: [
         ['Proxy Line for local runs']
     ],
-    11: [
-        ['antichess', [ARA_ENGINE_UP60, FAIRY_ENGINE], FAST_MODE],
-        ['antichess', [ARA_ENGINE_UP60, FAIRY_ENGINE], LONG_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP20_FROM0, ARA_ENGINE_SL7], FAST_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP20_FROM0, ARA_ENGINE_SL7], LONG_MODE],
+    6: [
+        ['crazyhouse', [ARA_ENGINE_UP50, FAIRY_ENGINE], FAST_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP50, FAIRY_ENGINE], LONG_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP50, CRAZYARA96_ENGINE], FAST_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP50, CRAZYARA96_ENGINE], LONG_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP40, ARA_ENGINE_UP50], FAST_MODE],
+        ['crazyhouse', [ARA_ENGINE_UP40, ARA_ENGINE_UP50], LONG_MODE],
     ]
 
 }
@@ -85,16 +87,16 @@ for i, s in enumerate(setup[args.gpu]):
     for engine in engines:
         # insert gpu-id dynamically
         if not args.local and (engine.binary_name == 'MultiAra' or engine.binary_name == 'CrazyAra'):
-            if 'MCTS' in engine.version:
-                engine.cli_options = [['Threads', '3'],
-                                      ['First_Device_ID', f'{args.gpu}'],
-                                      ['Last_Device_ID', f'{args.gpu}'],
-                                      ['Search_Type', f'mcts']]
-                mode.rounds = 150  # TODO: Delete
-            else:
-                engine.cli_options = [['Threads', '3'],
-                                      ['First_Device_ID', f'{args.gpu}'],
-                                      ['Last_Device_ID', f'{args.gpu}']]
+            # if 'MCTS' in engine.version:
+            #     engine.cli_options = [['Threads', '3'],
+            #                           ['First_Device_ID', f'{args.gpu}'],
+            #                           ['Last_Device_ID', f'{args.gpu}'],
+            #                           ['Search_Type', f'mcts']]
+            #     mode.rounds = 150  # TODO: Delete
+            # else:
+            engine.cli_options = [['Threads', '3'],
+                                  ['First_Device_ID', f'{args.gpu}'],
+                                  ['Last_Device_ID', f'{args.gpu}']]
         engine.initialize(uci_variant)
 
     book = None
