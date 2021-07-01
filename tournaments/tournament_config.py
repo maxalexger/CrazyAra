@@ -115,6 +115,14 @@ ARA_ENGINE_UP50 = Engine(
     binary_dir=f'/data/RL/engines/MultiAra-50updates/',
     version=f'Update50'
 )
+ARA_ENGINE_UP50_STATIC_TC_LONG = Engine(
+    name=f'MultiAra50TCLong',
+    shortname=f'Ara50TCLong',
+    binary_name=ARA_BINARY_NAME,
+    binary_dir=f'/data/RL/engines/MultiAra-50updates/',
+    version=f'Update50TCLong',
+    time_control=f'60+0.6'
+)
 ARA_ENGINE_UP60 = Engine(
     name=f'MultiAra60',
     shortname=f'Ara60',

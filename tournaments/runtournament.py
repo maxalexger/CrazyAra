@@ -65,6 +65,9 @@ setup = {
         ['kingofthehill', [ARA_ENGINE_UP30_FROM0, ARA_ENGINE_SL7], LONG_MODE],
         ['kingofthehill', [ARA_ENGINE_UP20_FROM0, ARA_ENGINE_UP30_FROM0], FAST_MODE],
         ['kingofthehill', [ARA_ENGINE_UP20_FROM0, ARA_ENGINE_UP30_FROM0], LONG_MODE],
+    ],
+    4: [
+        ['antichess', [ARA_ENGINE_UP50_STATIC_TC_LONG, FAIRY_ENGINE], FAST_MODE]
     ]
 }
 

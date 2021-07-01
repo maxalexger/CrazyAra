@@ -23,6 +23,11 @@ class Engine:
     binary_dir: str
     cli_options: List[List[str]] = None
 
+    # This TC always overwrites the general TC settings
+    # Only time_control or fixed_movetime can be set
+    time_control: str = None
+    fixed_movetime_sec: str = None
+
     def initialize(self, uci_variant: str) -> None:
         if self.cli_options:
             for option in self.cli_options:
@@ -92,7 +97,7 @@ class CutechessTournament:
                     assert len(option) == 2, f'{engine.name}: Please provide List[List[str, str]] as cli_options param'
 
         assert (mode.fixed_movetime_sec is None) ^ (mode.time_control is None), \
-            f'Do not use time control & fixed move time together!'
+            f'Mode: Do not use time control & fixed move time together!'
 
     def myPrint(self, line):
         print(line)
@@ -151,6 +156,19 @@ class CutechessTournament:
             cc_cmd += f'-openings file={self.opening_book_path} format=epd order=random plies=5 -repeat '
         for engine in self.engines:
             cc_cmd += f'-engine name={engine.name} dir={engine.binary_dir} cmd={engine.binary_name} '
+            # If the engine has a TC it overwrites the TC in Mode object
+            if engine.time_control or engine.fixed_movetime_sec:
+                assert (engine.fixed_movetime_sec is None) ^ (engine.time_control is None), \
+                    f'Engine: Do not use time control & fixed move time together!'
+                if engine.time_control:
+                    cc_cmd += f'tc={engine.time_control} '
+                elif engine.fixed_movetime_sec:
+                    cc_cmd += f'st={engine.fixed_movetime_sec} '
+            else:
+                if self.mode.time_control:
+                    cc_cmd += f'tc={self.mode.time_control} '
+                elif self.mode.fixed_movetime_sec:
+                    cc_cmd += f'st={self.mode.fixed_movetime_sec} '
             if engine.cli_options:
                 options = engine.cli_options
                 assert type(options) == list, f'{engine.name}: Please provide List[List[str, str]] as options parameter'
@@ -159,10 +177,6 @@ class CutechessTournament:
                     cc_cmd += f'option.{key}={option[1].strip()} '
 
         cc_cmd += f'-each proto=uci '
-        if self.mode.time_control:
-            cc_cmd += f'tc={self.mode.time_control} '
-        if self.mode.fixed_movetime_sec:
-            cc_cmd += f'st={self.mode.fixed_movetime_sec} '
 
         # Write cutechess command to file
         print(f'* Writing cutechess command to file')
