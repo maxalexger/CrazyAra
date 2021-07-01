@@ -55,8 +55,17 @@ setup = {
         ['crazyhouse', [ARA_ENGINE_UP50, CRAZYARA96_ENGINE], LONG_MODE],
         ['crazyhouse', [ARA_ENGINE_UP40, ARA_ENGINE_UP50], FAST_MODE],
         ['crazyhouse', [ARA_ENGINE_UP40, ARA_ENGINE_UP50], LONG_MODE],
+    ],
+    5: [
+        ['kingofthehill', [ARA_ENGINE_UP30_FROM0, ARA_ENGINE_UP30], FAST_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP30_FROM0, ARA_ENGINE_UP30], LONG_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP30_FROM0, FAIRY_ENGINE], FAST_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP30_FROM0, FAIRY_ENGINE], LONG_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP30_FROM0, ARA_ENGINE_SL7], FAST_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP30_FROM0, ARA_ENGINE_SL7], LONG_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP20_FROM0, ARA_ENGINE_UP30_FROM0], FAST_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP20_FROM0, ARA_ENGINE_UP30_FROM0], LONG_MODE],
     ]
-
 }
 
 for i, s in enumerate(setup[args.gpu]):
