@@ -30,35 +30,8 @@ class NeuralNetAPI:
         """
         self.batch_size = batch_size
 
-        if not os.path.isdir(main_config["model_architecture_dir"]):
-            raise Exception(
-                "The given model_architecture_dir at: " + main_config["model_architecture_dir"] + " wasn't found."
-            )
-        if not os.path.isdir(main_config["model_weights_dir"]):
-            raise Exception("The given model_weights_dir at: " + main_config["model_weights_dir"] + " wasn't found.")
-
-        if model_architecture_dir == "default":
-            self.symbol_path = glob.glob(main_config["model_architecture_dir"] + "*")[0]
-        else:
-            self.symbol_path = glob.glob(model_architecture_dir + "*")[0]
-
-        if model_weights_dir == "default":
-            self.params_path = glob.glob(main_config["model_weights_dir"] + "*")[0]
-        else:
-            self.params_path = glob.glob(model_weights_dir + "*")[0]
-        # make sure the needed files have been found
-        if self.symbol_path is None or ".json" not in self.symbol_path:
-            raise Exception(
-                "No symbol file (.json) was found in your given model_architecture_dir: "
-                + main_config["model_architecture_dir"]
-                + '. Please make sure that the path has a "/" at the end of the path.'
-            )
-        if self.params_path is None or ".params" not in self.params_path:
-            raise Exception(
-                "No params file (.params) was found in your given model_weights_dir: "
-                + main_config["model_weights_dir"]
-                + '. Please make sure that the path has a "/" at the end of the path.'
-            )
+        self.symbol_path = model_architecture_dir
+        self.params_path = model_weights_dir
 
         print("self.symbol_path:", self.symbol_path)
         print("self.params_path:", self.params_path)
