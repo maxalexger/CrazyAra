@@ -49,31 +49,13 @@ setup = {
         ['Proxy Line for local runs']
     ],
     6: [
-        ['crazyhouse', [ARA_ENGINE_UP50, FAIRY_ENGINE], FAST_MODE],
-        ['crazyhouse', [ARA_ENGINE_UP50, FAIRY_ENGINE], LONG_MODE],
-        ['crazyhouse', [ARA_ENGINE_UP50, CRAZYARA96_ENGINE], FAST_MODE],
-        ['crazyhouse', [ARA_ENGINE_UP50, CRAZYARA96_ENGINE], LONG_MODE],
-        ['crazyhouse', [ARA_ENGINE_UP40, ARA_ENGINE_UP50], FAST_MODE],
-        ['crazyhouse', [ARA_ENGINE_UP40, ARA_ENGINE_UP50], LONG_MODE],
-    ],
-    # 5: [
-    #     ['kingofthehill', [ARA_ENGINE_UP30_FROM0, ARA_ENGINE_UP30], FAST_MODE],
-    #     ['kingofthehill', [ARA_ENGINE_UP30_FROM0, ARA_ENGINE_UP30], LONG_MODE],
-    #     ['kingofthehill', [ARA_ENGINE_UP30_FROM0, FAIRY_ENGINE], FAST_MODE],
-    #     ['kingofthehill', [ARA_ENGINE_UP30_FROM0, FAIRY_ENGINE], LONG_MODE],
-    #     ['kingofthehill', [ARA_ENGINE_UP30_FROM0, ARA_ENGINE_SL7], FAST_MODE],
-    #     ['kingofthehill', [ARA_ENGINE_UP30_FROM0, ARA_ENGINE_SL7], LONG_MODE],
-    #     ['kingofthehill', [ARA_ENGINE_UP20_FROM0, ARA_ENGINE_UP30_FROM0], FAST_MODE],
-    #     ['kingofthehill', [ARA_ENGINE_UP20_FROM0, ARA_ENGINE_UP30_FROM0], LONG_MODE],
-    # ],
-    4: [
-        ['antichess', [ARA_ENGINE_UP50_STATIC_TC_LONG, FAIRY_ENGINE], FAST_MODE]
+        ['racingkings', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], FAST_MODE],
+        ['racingkings', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], LONG_MODE],
     ],
     5: [
-        ['3check', [ARA_ENGINE_UP40, FAIRY_ENGINE], FAST_MODE],
-        ['3check', [ARA_ENGINE_UP40, FAIRY_ENGINE], LONG_MODE],
-        ['3check', [ARA_ENGINE_UP30, ARA_ENGINE_UP40], FAST_MODE],
-        ['3check', [ARA_ENGINE_UP30, ARA_ENGINE_UP40], LONG_MODE],
+        ['racingkings', [ARA_ENGINE_SL7, FAIRY_ENGINE], FAST_MODE],
+        ['racingkings', [ARA_ENGINE_SL7, FAIRY_ENGINE], LONG_MODE],
+
     ]
 }
 
@@ -83,7 +65,7 @@ for i, s in enumerate(setup[args.gpu]):
     if args.local:
         event_name = None
         uci_variant = 'racingkings'
-        engines = [ARA_ENGINE_RACING_LOCAL, ARA_ENGINE_UP20_LOCAL]
+        engines = [ARA_ENGINE_RACING_LOCAL, FAIRY_ENGINE_LOCAL]
         mode = RAPID_MODE
     else:
         event_name = None
