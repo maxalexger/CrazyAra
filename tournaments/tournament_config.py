@@ -131,6 +131,14 @@ ARA_ENGINE_UP60 = Engine(
     version=f'Update60'
 )
 
+ARA_ENGINE_UP60_NOEXPLOINC = Engine(
+    name=f'MultiAra60NoExploInc',
+    shortname=f'Ara60NoExInc',
+    binary_name=ARA_BINARY_NAME,
+    binary_dir=f'/data/RL/engines/MultiAra-noexploinc-60updates/',
+    version=f'Update60NoExploInc'
+)
+
 ARA_ENGINE_UP10_FROM0 = Engine(
     name=f'MultiAra10From0',
     shortname=f'Ara10From0',
@@ -152,6 +160,13 @@ ARA_ENGINE_UP30_FROM0 = Engine(
     binary_name=ARA_BINARY_NAME,
     binary_dir=f'/data/RL/engines/MultiAra-from0-30updates/',
     version=f'Update30From0'
+)
+ARA_ENGINE_UP30_FROM0_EXTSCHED = Engine(
+    name=f'MultiAra30From0ExtSched',
+    shortname=f'Ara30From0ExtSched',
+    binary_name=ARA_BINARY_NAME,
+    binary_dir=f'/data/RL/engines/MultiAra-from0-extSched-30updates/',
+    version=f'Update30From0ExtSched'
 )
 ARA_ENGINE_UP40_FROM0 = Engine(
     name=f'MultiAra40From0',
