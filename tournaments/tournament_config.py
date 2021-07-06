@@ -168,6 +168,27 @@ ARA_ENGINE_UP30_FROM0_EXTSCHED = Engine(
     binary_dir=f'/data/RL/engines/MultiAra-from0-extSched-30updates/',
     version=f'Update30From0ExtSched'
 )
+ARA_ENGINE_UP40_FROM0_EXTSCHED = Engine(
+    name=f'MultiAra40From0ExtSched',
+    shortname=f'Ara40From0ExtSched',
+    binary_name=ARA_BINARY_NAME,
+    binary_dir=f'/data/RL/engines/MultiAra-from0-extSched-40updates/',
+    version=f'Update40From0ExtSched'
+)
+ARA_ENGINE_UP50_FROM0_EXTSCHED = Engine(
+    name=f'MultiAra50From0ExtSched',
+    shortname=f'Ara50From0ExtSched',
+    binary_name=ARA_BINARY_NAME,
+    binary_dir=f'/data/RL/engines/MultiAra-from0-extSched-50updates/',
+    version=f'Update50From0ExtSched'
+)
+ARA_ENGINE_UP60_FROM0_EXTSCHED = Engine(
+    name=f'MultiAra60From0ExtSched',
+    shortname=f'Ara60From0ExtSched',
+    binary_name=ARA_BINARY_NAME,
+    binary_dir=f'/data/RL/engines/MultiAra-from0-extSched-60updates/',
+    version=f'Update60From0ExtSched'
+)
 ARA_ENGINE_UP40_FROM0 = Engine(
     name=f'MultiAra40From0',
     shortname=f'Ara40From0',

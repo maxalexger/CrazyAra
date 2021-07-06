@@ -48,34 +48,21 @@ setup = {
     0: [
         ['Proxy Line for local runs']
     ],
-    12: [
-        ['3check', [ARA_ENGINE_UP40, ARA_ENGINE_UP50], FAST_MODE],
-        ['3check', [ARA_ENGINE_UP40, ARA_ENGINE_UP50], LONG_MODE],
-        ['3check', [ARA_ENGINE_UP50, FAIRY_ENGINE], FAST_MODE],
-        ['3check', [ARA_ENGINE_UP50, FAIRY_ENGINE], LONG_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP30_FROM0_EXTSCHED, FAIRY_ENGINE], LONG_MODE],
-        ['horde', [ARA_ENGINE_UP50, FAIRY_ENGINE], LONG_MODE],
+    11: [
+        ['racingkings', [ARA_ENGINE_UP10, FAIRY_ENGINE], FAST_MODE],
+        ['racingkings', [ARA_ENGINE_UP10, FAIRY_ENGINE], LONG_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP30_FROM0_EXTSCHED, ARA_ENGINE_SL7], FAST_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP30_FROM0_EXTSCHED, ARA_ENGINE_SL7], LONG_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP40_FROM0_EXTSCHED, ARA_ENGINE_SL7], FAST_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP40_FROM0_EXTSCHED, ARA_ENGINE_SL7], LONG_MODE],
     ],
     10: [
-        ['antichess', [ARA_ENGINE_UP50, ARA_ENGINE_UP60_NOEXPLOINC], FAST_MODE],
-        ['antichess', [ARA_ENGINE_UP50, ARA_ENGINE_UP60_NOEXPLOINC], LONG_MODE],
-        ['antichess', [ARA_ENGINE_UP60_NOEXPLOINC, FAIRY_ENGINE], FAST_MODE],
-        ['antichess', [ARA_ENGINE_UP60_NOEXPLOINC, FAIRY_ENGINE], LONG_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP20_FROM0, ARA_ENGINE_UP30_FROM0_EXTSCHED], FAST_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP20_FROM0, ARA_ENGINE_UP30_FROM0_EXTSCHED], LONG_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP30_FROM0_EXTSCHED, FAIRY_ENGINE], FAST_MODE],
-    ],
-    11: [
-        ['horde', [ARA_ENGINE_UP30, ARA_ENGINE_UP40], FAST_MODE],
-        ['horde', [ARA_ENGINE_UP30, ARA_ENGINE_UP40], LONG_MODE],
-        ['horde', [ARA_ENGINE_UP40, FAIRY_ENGINE], FAST_MODE],
-        ['horde', [ARA_ENGINE_UP40, FAIRY_ENGINE], LONG_MODE],
-        ['horde', [ARA_ENGINE_UP40, ARA_ENGINE_UP50], FAST_MODE],
-        ['horde', [ARA_ENGINE_UP40, ARA_ENGINE_UP50], LONG_MODE],
-        ['horde', [ARA_ENGINE_UP50, FAIRY_ENGINE], FAST_MODE],
-    ],
-    13: [
-
+        ['kingofthehill', [ARA_ENGINE_UP40_FROM0_EXTSCHED, FAIRY_ENGINE], FAST_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP40_FROM0_EXTSCHED, FAIRY_ENGINE], LONG_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP30_FROM0_EXTSCHED, ARA_ENGINE_UP40_FROM0_EXTSCHED], FAST_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP30_FROM0_EXTSCHED, ARA_ENGINE_UP40_FROM0_EXTSCHED], LONG_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP40_FROM0_EXTSCHED, ARA_ENGINE_UP40], FAST_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP40_FROM0_EXTSCHED, ARA_ENGINE_UP40], LONG_MODE],
     ]
 }
 
@@ -98,9 +85,9 @@ for i, s in enumerate(setup[args.gpu]):
     engine_str = engines[0].name
     for e in engines[1:]:
         engine_str += ' vs. ' + e.name
-    with open(f'{WORKING_DIR}/gpu_{args.gpu}.log', 'a+') as f:
+    with open(f'{WORKING_DIR}/gpus.log', 'a+') as f:
         f.write(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}: '
-                f'{uci_variant} - {engine_str} - {mode.name} [{i+1}/{len(setup[args.gpu])}]\n')
+                f'GPU {args.gpu:2}: {uci_variant} - {engine_str} - {mode.name} [{i+1}/{len(setup[args.gpu])}]\n')
 
     # ------ Execute ------- #
 
