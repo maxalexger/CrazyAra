@@ -63,6 +63,18 @@ setup = {
         ['kingofthehill', [ARA_ENGINE_UP30_FROM0_EXTSCHED, ARA_ENGINE_UP40_FROM0_EXTSCHED], LONG_MODE],
         ['kingofthehill', [ARA_ENGINE_UP40_FROM0_EXTSCHED, ARA_ENGINE_UP40], FAST_MODE],
         ['kingofthehill', [ARA_ENGINE_UP40_FROM0_EXTSCHED, ARA_ENGINE_UP40], LONG_MODE],
+    ],
+    9: [
+        ['racingkings', [ARA_ENGINE_UP10_ALPHA60, FAIRY_ENGINE], FAST_MODE],
+        ['racingkings', [ARA_ENGINE_UP10_ALPHA60, FAIRY_ENGINE], LONG_MODE],
+        ['racingkings', [ARA_ENGINE_UP10_RACINGMIRRORED, FAIRY_ENGINE], FAST_MODE],
+        ['racingkings', [ARA_ENGINE_UP10_RACINGMIRRORED, FAIRY_ENGINE], LONG_MODE],
+        ['racingkings', [ARA_ENGINE_UP10, ARA_ENGINE_UP10_RACINGMIRRORED], FAST_MODE],
+        ['racingkings', [ARA_ENGINE_UP10, ARA_ENGINE_UP10_RACINGMIRRORED], LONG_MODE],
+        ['racingkings', [ARA_ENGINE_UP10, ARA_ENGINE_UP10_ALPHA60], FAST_MODE],
+        ['racingkings', [ARA_ENGINE_UP10, ARA_ENGINE_UP10_ALPHA60], LONG_MODE],
+        ['racingkings', [ARA_ENGINE_UP10_ALPHA60, ARA_ENGINE_UP10_RACINGMIRRORED], FAST_MODE],
+        ['racingkings', [ARA_ENGINE_UP10_ALPHA60, ARA_ENGINE_UP10_RACINGMIRRORED], LONG_MODE],
     ]
 }
 
@@ -72,7 +84,7 @@ for i, s in enumerate(setup[args.gpu]):
     if args.local:
         event_name = None
         uci_variant = 'racingkings'
-        engines = [ARA_ENGINE_RACING_LOCAL, FAIRY_ENGINE_LOCAL]
+        engines = [ARA_ENGINE_RACING_LOCAL, ARA_ENGINE_UP10_LOCAL]
         mode = RAPID_MODE
     else:
         event_name = None

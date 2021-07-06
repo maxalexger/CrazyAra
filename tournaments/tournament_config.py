@@ -80,6 +80,23 @@ ARA_ENGINE_UP10 = Engine(
     binary_dir=f'/data/RL/engines/MultiAra-10updates/',
     version=f'Update10'
 )
+
+ARA_ENGINE_UP10_RACINGMIRRORED = Engine(
+    name=f'MultiAra10RacingMirrored',
+    shortname=f'Ara10RaceMirr',
+    binary_name=ARA_BINARY_NAME,
+    binary_dir=f'/data/RL/engines/MultiAra-RacingMirrored-10updates/',
+    version=f'Update10RacingMirrored'
+)
+
+ARA_ENGINE_UP10_ALPHA60 = Engine(
+    name=f'MultiAra10Alpha60',
+    shortname=f'Ara10Alpha60',
+    binary_name=ARA_BINARY_NAME,
+    binary_dir=f'/data/RL/engines/MultiAra-alpha60-10updates/',
+    version=f'Update10Alpha60'
+)
+
 ARA_ENGINE_UP20 = Engine(
     name=f'MultiAra20',
     shortname=f'Ara20',
