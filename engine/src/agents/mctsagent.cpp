@@ -223,12 +223,12 @@ void MCTSAgent::apply_move_to_tree(Action move, bool ownMove)
 {
     if (!reusedFullTree && rootNode != nullptr && rootNode->is_playout_node()) {
         if (ownMove) {
-            info_string("apply move to tree");
+            // info_string("apply move to tree");
             opponentsNextRoot = pick_next_node(move, rootNode.get());
             return;
         }
         else if (opponentsNextRoot != nullptr && opponentsNextRoot->is_playout_node()){
-            info_string("apply move to tree");
+            // info_string("apply move to tree");
             ownNextRoot = pick_next_node(move, opponentsNextRoot.get());
             return;
         }
