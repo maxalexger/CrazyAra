@@ -49,10 +49,55 @@ setup = {
         ['Proxy Line for local runs']
     ],
     4: [
-        ['antichess', [ARA_ENGINE_SL7, ARA_ENGINE_UP10, ARA_ENGINE_UP20,
-                       ARA_ENGINE_UP30, ARA_ENGINE_UP40, ARA_ENGINE_UP50,
-                       ARA_ENGINE_UP60_NOEXPLOINC], RAPID_MODE],
+        ['antichess', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], FAST_MODE],
+        ['antichess', [ARA_ENGINE_SL7, ARA_ENGINE_UP10], LONG_MODE],
+        ['antichess', [ARA_ENGINE_UP10, ARA_ENGINE_UP20], FAST_MODE],
+        ['antichess', [ARA_ENGINE_UP10, ARA_ENGINE_UP20], LONG_MODE],
     ],
+    5: [
+        ['antichess', [ARA_ENGINE_UP20, ARA_ENGINE_UP30], FAST_MODE],
+        ['antichess', [ARA_ENGINE_UP20, ARA_ENGINE_UP30], LONG_MODE],
+        ['antichess', [ARA_ENGINE_UP30, ARA_ENGINE_UP40], FAST_MODE],
+        ['antichess', [ARA_ENGINE_UP30, ARA_ENGINE_UP40], LONG_MODE],
+    ],
+    6: [
+        ['antichess', [ARA_ENGINE_UP40, ARA_ENGINE_UP50], FAST_MODE],
+        ['antichess', [ARA_ENGINE_UP40, ARA_ENGINE_UP50], LONG_MODE],
+        ['antichess', [ARA_ENGINE_UP50, ARA_ENGINE_UP60_NOEXPLOINC], FAST_MODE],
+        ['antichess', [ARA_ENGINE_UP50, ARA_ENGINE_UP60_NOEXPLOINC], LONG_MODE],
+    ],
+    7: [
+        ['antichess', [ARA_ENGINE_SL7, FAIRY_ENGINE], FAST_MODE],
+        ['antichess', [ARA_ENGINE_SL7, FAIRY_ENGINE], LONG_MODE],
+        ['antichess', [ARA_ENGINE_UP10, FAIRY_ENGINE], FAST_MODE],
+        ['antichess', [ARA_ENGINE_UP10, FAIRY_ENGINE], LONG_MODE],
+    ],
+    8: [
+        ['antichess', [ARA_ENGINE_UP20, FAIRY_ENGINE], FAST_MODE],
+        ['antichess', [ARA_ENGINE_UP20, FAIRY_ENGINE], LONG_MODE],
+        ['antichess', [ARA_ENGINE_UP30, FAIRY_ENGINE], FAST_MODE],
+        ['antichess', [ARA_ENGINE_UP30, FAIRY_ENGINE], LONG_MODE],
+    ],
+    1: [
+        ['antichess', [ARA_ENGINE_UP40, FAIRY_ENGINE], FAST_MODE],
+        ['antichess', [ARA_ENGINE_UP40, FAIRY_ENGINE], LONG_MODE],
+        ['antichess', [ARA_ENGINE_UP10, FAIRY_ENGINE], FAST_MODE],
+        ['antichess', [ARA_ENGINE_UP50, FAIRY_ENGINE], LONG_MODE],
+    ],
+    3: [
+        ['antichess', [ARA_ENGINE_UP50, FAIRY_ENGINE], FAST_MODE],
+        ['antichess', [ARA_ENGINE_UP50, FAIRY_ENGINE], LONG_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP50, FAIRY_ENGINE_NNUE], FAST_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP50, FAIRY_ENGINE_NNUE], LONG_MODE],
+        ['racingkings', [ARA_ENGINE_UP10, FAIRY_ENGINE_NNUE], FAST_MODE],
+    ],
+    2: [
+        ['racingkings', [ARA_ENGINE_UP10, FAIRY_ENGINE_NNUE], LONG_MODE],
+        ['3check', [ARA_ENGINE_UP40, FAIRY_ENGINE_NNUE], FAST_MODE],
+        ['3check', [ARA_ENGINE_UP40, FAIRY_ENGINE_NNUE], LONG_MODE],
+        ['atomic', [ARA_ENGINE_UP30, FAIRY_ENGINE_NNUE], FAST_MODE],
+        ['atomic', [ARA_ENGINE_UP30, FAIRY_ENGINE_NNUE], LONG_MODE],
+    ]
 }
 
 for i, s in enumerate(setup[args.gpu]):
@@ -60,8 +105,8 @@ for i, s in enumerate(setup[args.gpu]):
     # ------ Select ------- #
     if args.local:
         event_name = None
-        uci_variant = 'racingkings'
-        engines = [ARA_ENGINE_RACING_LOCAL, ARA_ENGINE_UP10_LOCAL]
+        uci_variant = 'kingofthehill'
+        engines = [ARA_ENGINE_UP10_LOCAL, FAIRY_ENGINE_NNUE_LOCAL]
         mode = RAPID_MODE
     else:
         event_name = None
@@ -83,16 +128,14 @@ for i, s in enumerate(setup[args.gpu]):
     for engine in engines:
         # insert gpu-id dynamically
         if not args.local and (engine.binary_name == 'MultiAra' or engine.binary_name == 'CrazyAra'):
-            # if 'MCTS' in engine.version:
-            #     engine.cli_options = [['Threads', '3'],
-            #                           ['First_Device_ID', f'{args.gpu}'],
-            #                           ['Last_Device_ID', f'{args.gpu}'],
-            #                           ['Search_Type', f'mcts']]
-            #     mode.rounds = 150  # TODO: Delete
-            # else:
             engine.cli_options = [['Threads', '3'],
                                   ['First_Device_ID', f'{args.gpu}'],
                                   ['Last_Device_ID', f'{args.gpu}']]
+        elif not args.local and engine.binary_name == 'FairyStockfishNNUE':
+            engine.cli_options = [['Threads', '4'],
+                                  ['Hash', '2048'],
+                                  ['Use NNUE', 'true'],
+                                  ['EvalFile', f'{FAIRY_NNUE[uci_variant]}']]
         engine.initialize(uci_variant)
 
     book = None

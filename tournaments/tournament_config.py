@@ -4,7 +4,10 @@ from cutechesstournament import Engine, TournamentMode
 
 ARA_BINARY_NAME = f'MultiAra'
 FAIRY_NNUE = {
-    f'kingofthehill': f'kingofthehill-581cd1c0b2e5.nnue'
+    f'3check': f'3check-bba0afd355bd.nnue',
+    f'atomic': f'atomic-6afe873e5ac3.nnue',
+    f'kingofthehill': f'kingofthehill-581cd1c0b2e5.nnue',
+    f'racingkings': f'racingkings-9ef6dd7cfdfb.nnue'
 }
 
 
@@ -16,6 +19,17 @@ FAIRY_ENGINE_LOCAL = Engine(
     binary_dir=f'/home/maxalex/Documents/Engines/fairy-stockfish/',
     binary_name=f'fairy-stockfish',
     version='13.1'
+)
+
+
+FAIRY_ENGINE_NNUE_LOCAL = Engine(
+    name=f'FairyStockfishNNUE',
+    shortname=f'FairySF-NNUE',
+    binary_dir=f'/home/maxalex/Documents/Engines/fairy-stockfish/',
+    binary_name=f'fairy-stockfish',
+    version='13.1-NNUE',
+    cli_options=[['Use NNUE', 'true'],
+                 ['EvalFile', 'kingofthehill-581cd1c0b2e5.nnue']]
 )
 
 ARA_ENGINE_SL7_LOCAL = Engine(
@@ -66,11 +80,20 @@ ARA_ENGINE_RACING_LOCAL = Engine(
 FAIRY_ENGINE = Engine(
     name=f'FairyStockfish',
     shortname=f'FairySF',
-    binary_dir=f'/data/RL/engines/',
+    binary_dir=f'/data/RL/engines/Fairy-Stockfish/',
     binary_name=f'fairy-stockfish',
     version='13.1',
     cli_options=[['Threads', '4'],
                  ['Hash', '2048']]
+)
+
+
+FAIRY_ENGINE_NNUE = Engine(
+    name=f'FairyStockfishNNUE',
+    shortname=f'FairySFNNUE',
+    binary_dir=f'/data/RL/engines/Fairy-Stockfish/',
+    binary_name=f'fairy-stockfish',
+    version='13.1-NNUE'
 )
 
 ARA_ENGINE_UP10 = Engine(
@@ -258,8 +281,7 @@ BOOKS = {
     f'3check': f'3check.epd',
     f'atomic': f'atomic.epd',
     f'crazyhouse': f'crazyhouse_cp_130.epd',
-    f'antichess': f'giveaway.epd',
-    f'giveaway': f'giveaway.epd',
+    f'antichess': f'suicide.epd',
     f'horde': f'horde.epd',
     f'kingofthehill': f'kingofthehill.epd',
     f'racingkings': f'racingkings.epd'

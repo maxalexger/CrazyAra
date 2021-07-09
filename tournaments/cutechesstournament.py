@@ -141,6 +141,8 @@ class CutechessTournament:
     def _create_tournament_dir(self):
         print(f'* Creating tournament directory')
         self.tournament_dir = os.path.join(self.export_dir, self.uci_variant, self.tournament_name)
+        if not os.path.exists(os.path.join(self.export_dir, self.uci_variant)):
+            os.mkdir(os.path.join(self.export_dir, self.uci_variant))
         if os.path.exists(self.tournament_dir):
             raise FileExistsError('The tournament folder already exists')
         else:
