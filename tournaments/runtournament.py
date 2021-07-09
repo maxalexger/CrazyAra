@@ -49,26 +49,10 @@ setup = {
         ['Proxy Line for local runs']
     ],
     4: [
-        ['kingofthehill', [ARA_ENGINE_UP50_FROM0_EXTSCHED, ARA_ENGINE_UP50], FAST_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP50_FROM0_EXTSCHED, ARA_ENGINE_SL7], FAST_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP50_FROM0_EXTSCHED, ARA_ENGINE_SL7], LONG_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP50, ARA_ENGINE_UP60_NOEXPLOINC], FAST_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP50, ARA_ENGINE_UP60_NOEXPLOINC], LONG_MODE],
+        ['antichess', [ARA_ENGINE_SL7, ARA_ENGINE_UP10, ARA_ENGINE_UP20,
+                       ARA_ENGINE_UP30, ARA_ENGINE_UP40, ARA_ENGINE_UP50,
+                       ARA_ENGINE_UP60_NOEXPLOINC], RAPID_MODE],
     ],
-    5: [
-        ['kingofthehill', [ARA_ENGINE_UP50_FROM0_EXTSCHED, ARA_ENGINE_UP50], LONG_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP40_FROM0_EXTSCHED, ARA_ENGINE_UP50_FROM0_EXTSCHED], FAST_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP40_FROM0_EXTSCHED, ARA_ENGINE_UP50_FROM0_EXTSCHED], LONG_MODE],
-    ],
-    6: [
-        ['kingofthehill', [ARA_ENGINE_UP50_FROM0_EXTSCHED, FAIRY_ENGINE], FAST_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP60_NOEXPLOINC, FAIRY_ENGINE], FAST_MODE],
-    ],
-    7: [
-        ['kingofthehill', [ARA_ENGINE_UP50_FROM0_EXTSCHED, FAIRY_ENGINE], LONG_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP60_NOEXPLOINC, FAIRY_ENGINE], LONG_MODE],
-    ]
-
 }
 
 for i, s in enumerate(setup[args.gpu]):
