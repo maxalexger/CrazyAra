@@ -274,6 +274,13 @@ CRAZYARA96_ENGINE = Engine(
     binary_dir=f'/data/RL/engines/CrazyAra96/',
     version=f'Crazy96'
 )
+CRAZYARA_SL_ENGINE = Engine(
+    name=f'CrazyAraSL',
+    shortname=f'CrazySL',
+    binary_name='CrazyAra',
+    binary_dir=f'/data/RL/engines/CrazyAraSL/',
+    version=f'CrazySL'
+)
 
 # ========== BOOKS ========== #
 
