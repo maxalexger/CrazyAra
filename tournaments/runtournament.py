@@ -72,32 +72,12 @@ setup = {
         ['antichess', [ARA_ENGINE_UP10, FAIRY_ENGINE], FAST_MODE],
         ['antichess', [ARA_ENGINE_UP10, FAIRY_ENGINE], LONG_MODE],
     ],
-    8: [
-        ['antichess', [ARA_ENGINE_UP20, FAIRY_ENGINE], FAST_MODE],
-        ['antichess', [ARA_ENGINE_UP20, FAIRY_ENGINE], LONG_MODE],
-        ['antichess', [ARA_ENGINE_UP30, FAIRY_ENGINE], FAST_MODE],
-        ['antichess', [ARA_ENGINE_UP30, FAIRY_ENGINE], LONG_MODE],
+    3: [
+        ['antichess', [ARA_ENGINE_UP60_NOEXPLOINC, FAIRY_ENGINE], LONG_MODE],
     ],
     1: [
-        ['antichess', [ARA_ENGINE_UP40, FAIRY_ENGINE], FAST_MODE],
-        ['antichess', [ARA_ENGINE_UP40, FAIRY_ENGINE], LONG_MODE],
-        ['antichess', [ARA_ENGINE_UP10, FAIRY_ENGINE], FAST_MODE],
-        ['antichess', [ARA_ENGINE_UP50, FAIRY_ENGINE], LONG_MODE],
+        ['antichess', [ARA_ENGINE_UP60_NOEXPLOINC, FAIRY_ENGINE], FAST_MODE],
     ],
-    3: [
-        ['antichess', [ARA_ENGINE_UP50, FAIRY_ENGINE], FAST_MODE],
-        ['antichess', [ARA_ENGINE_UP50, FAIRY_ENGINE], LONG_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP50, FAIRY_ENGINE_NNUE], FAST_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP50, FAIRY_ENGINE_NNUE], LONG_MODE],
-        ['racingkings', [ARA_ENGINE_UP10, FAIRY_ENGINE_NNUE], FAST_MODE],
-    ],
-    2: [
-        ['racingkings', [ARA_ENGINE_UP10, FAIRY_ENGINE_NNUE], LONG_MODE],
-        ['3check', [ARA_ENGINE_UP40, FAIRY_ENGINE_NNUE], FAST_MODE],
-        ['3check', [ARA_ENGINE_UP40, FAIRY_ENGINE_NNUE], LONG_MODE],
-        ['atomic', [ARA_ENGINE_UP30, FAIRY_ENGINE_NNUE], FAST_MODE],
-        ['atomic', [ARA_ENGINE_UP30, FAIRY_ENGINE_NNUE], LONG_MODE],
-    ]
 }
 
 for i, s in enumerate(setup[args.gpu]):
