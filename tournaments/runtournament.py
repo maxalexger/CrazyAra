@@ -49,34 +49,30 @@ setup = {
         ['Proxy Line for local runs']
     ],
     1: [
-        ['crazyhouse', [ARA_ENGINE_SL7, CRAZYARA_SL_ENGINE], FAST_MODE],
-        ['crazyhouse', [ARA_ENGINE_SL7, CRAZYARA_SL_ENGINE], LONG_MODE],
+        ['atomic', [ARA_ENGINE_UP30, FAIRY_ENGINE_NNUE], FAST_MODE],
+        ['atomic', [ARA_ENGINE_UP30, FAIRY_ENGINE_NNUE], LONG_MODE],
     ],
     4: [
-        ['kingofthehill', [ARA_ENGINE_UP30_FROM0_EXTSCHED, ARA_ENGINE_UP30], FAST_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP30_FROM0_EXTSCHED, ARA_ENGINE_UP30], LONG_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP50_FROM0_EXTSCHED, ARA_ENGINE_UP60_FROM0_EXTSCHED], FAST_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP50_FROM0_EXTSCHED, ARA_ENGINE_UP60_FROM0_EXTSCHED], LONG_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP60_FROM0_EXTSCHED, ARA_ENGINE_UP60], FAST_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP60_FROM0_EXTSCHED, ARA_ENGINE_UP70_FROM0_EXTSCHED], FAST_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP60_FROM0_EXTSCHED, ARA_ENGINE_UP70_FROM0_EXTSCHED], LONG_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP70_FROM0_EXTSCHED, ARA_ENGINE_SL7], LONG_MODE],
     ],
     3: [
         ['kingofthehill', [ARA_ENGINE_UP50, FAIRY_ENGINE_NNUE], FAST_MODE],
         ['kingofthehill', [ARA_ENGINE_UP50, FAIRY_ENGINE_NNUE], LONG_MODE],
-        ['racingkings', [ARA_ENGINE_UP10, FAIRY_ENGINE_NNUE], FAST_MODE],
     ],
     2: [
-        ['racingkings', [ARA_ENGINE_UP10, FAIRY_ENGINE_NNUE], LONG_MODE],
         ['3check', [ARA_ENGINE_UP40, FAIRY_ENGINE_NNUE], FAST_MODE],
         ['3check', [ARA_ENGINE_UP40, FAIRY_ENGINE_NNUE], LONG_MODE],
-        ['atomic', [ARA_ENGINE_UP30, FAIRY_ENGINE_NNUE], FAST_MODE],
-        ['atomic', [ARA_ENGINE_UP30, FAIRY_ENGINE_NNUE], LONG_MODE],
     ],
     5: [
-        ['kingofthehill', [ARA_ENGINE_UP60_FROM0_EXTSCHED, ARA_ENGINE_UP60], LONG_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP60_FROM0_EXTSCHED, FAIRY_ENGINE], FAST_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP60_FROM0_EXTSCHED, FAIRY_ENGINE], LONG_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP60_FROM0_EXTSCHED, ARA_ENGINE_SL7], FAST_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP60_FROM0_EXTSCHED, ARA_ENGINE_SL7], LONG_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP70_FROM0_EXTSCHED, FAIRY_ENGINE], FAST_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP70_FROM0_EXTSCHED, FAIRY_ENGINE], LONG_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP70_FROM0_EXTSCHED, ARA_ENGINE_SL7], FAST_MODE],
+    ],
+    6: [
+        ['racingkings', [ARA_ENGINE_UP10, FAIRY_ENGINE_NNUE], FAST_MODE],
+        ['racingkings', [ARA_ENGINE_UP10, FAIRY_ENGINE_NNUE], LONG_MODE],
     ]
 }
 
@@ -111,7 +107,7 @@ for i, s in enumerate(setup[args.gpu]):
             engine.cli_options = [['Threads', '3'],
                                   ['First_Device_ID', f'{args.gpu}'],
                                   ['Last_Device_ID', f'{args.gpu}']]
-        elif not args.local and engine.binary_name == 'FairyStockfishNNUE':
+        elif not args.local and engine.name == 'FairyStockfishNNUE':
             engine.cli_options = [['Threads', '4'],
                                   ['Hash', '2048'],
                                   ['Use NNUE', 'true'],
