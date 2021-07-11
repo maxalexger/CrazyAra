@@ -58,8 +58,8 @@ setup = {
         ['kingofthehill', [ARA_ENGINE_UP70_FROM0_EXTSCHED, ARA_ENGINE_SL7], LONG_MODE],
     ],
     3: [
-        ['kingofthehill', [ARA_ENGINE_UP50, FAIRY_ENGINE_NNUE], FAST_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP50, FAIRY_ENGINE_NNUE], LONG_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP60, FAIRY_ENGINE_NNUE], FAST_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP60, FAIRY_ENGINE_NNUE], LONG_MODE],
     ],
     2: [
         ['3check', [ARA_ENGINE_UP40, FAIRY_ENGINE_NNUE], FAST_MODE],
