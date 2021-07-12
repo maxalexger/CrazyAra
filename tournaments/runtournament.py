@@ -49,30 +49,22 @@ setup = {
         ['Proxy Line for local runs']
     ],
     1: [
-        ['atomic', [ARA_ENGINE_UP30, FAIRY_ENGINE_NNUE], FAST_MODE],
-        ['atomic', [ARA_ENGINE_UP30, FAIRY_ENGINE_NNUE], LONG_MODE],
-    ],
-    4: [
-        ['kingofthehill', [ARA_ENGINE_UP60_FROM0_EXTSCHED, ARA_ENGINE_UP70_FROM0_EXTSCHED], FAST_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP60_FROM0_EXTSCHED, ARA_ENGINE_UP70_FROM0_EXTSCHED], LONG_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP70_FROM0_EXTSCHED, ARA_ENGINE_SL7], LONG_MODE],
-    ],
-    3: [
-        ['kingofthehill', [ARA_ENGINE_UP60_NOEXPLOINC, FAIRY_ENGINE_NNUE], FAST_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP60_NOEXPLOINC, FAIRY_ENGINE_NNUE], LONG_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP70_FROM0_EXTSCHED, ARA_ENGINE_UP80_FROM0_EXTSCHED], FAST_MODE],
     ],
     2: [
-        ['3check', [ARA_ENGINE_UP40, FAIRY_ENGINE_NNUE], FAST_MODE],
-        ['3check', [ARA_ENGINE_UP40, FAIRY_ENGINE_NNUE], LONG_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP70_FROM0_EXTSCHED, ARA_ENGINE_UP80_FROM0_EXTSCHED], LONG_MODE],
+    ],
+    3: [
+        ['kingofthehill', [ARA_ENGINE_UP80_FROM0_EXTSCHED, FAIRY_ENGINE], FAST_MODE],
+    ],
+    4: [
+        ['kingofthehill', [ARA_ENGINE_UP80_FROM0_EXTSCHED, FAIRY_ENGINE], LONG_MODE],
     ],
     5: [
-        ['kingofthehill', [ARA_ENGINE_UP70_FROM0_EXTSCHED, FAIRY_ENGINE], FAST_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP70_FROM0_EXTSCHED, FAIRY_ENGINE], LONG_MODE],
-        ['kingofthehill', [ARA_ENGINE_UP70_FROM0_EXTSCHED, ARA_ENGINE_SL7], FAST_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP80_FROM0_EXTSCHED, ARA_ENGINE_UP60_NOEXPLOINC], FAST_MODE],
     ],
     6: [
-        ['racingkings', [ARA_ENGINE_UP10, FAIRY_ENGINE_NNUE], FAST_MODE],
-        ['racingkings', [ARA_ENGINE_UP10, FAIRY_ENGINE_NNUE], LONG_MODE],
+        ['kingofthehill', [ARA_ENGINE_UP80_FROM0_EXTSCHED, ARA_ENGINE_UP60_NOEXPLOINC], LONG_MODE],
     ]
 }
 
