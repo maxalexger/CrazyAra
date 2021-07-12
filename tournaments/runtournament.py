@@ -60,10 +60,10 @@ setup = {
     4: [
         ['kingofthehill', [ARA_ENGINE_UP80_FROM0_EXTSCHED, FAIRY_ENGINE], LONG_MODE],
     ],
-    5: [
+    8: [
         ['kingofthehill', [ARA_ENGINE_UP80_FROM0_EXTSCHED, ARA_ENGINE_UP60_NOEXPLOINC], FAST_MODE],
     ],
-    6: [
+    9: [
         ['kingofthehill', [ARA_ENGINE_UP80_FROM0_EXTSCHED, ARA_ENGINE_UP60_NOEXPLOINC], LONG_MODE],
     ]
 }
